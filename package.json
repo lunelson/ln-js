@@ -1,0 +1,22 @@
+{
+  "name": "ln-js",
+  "version": "0.0.6",
+  "description": "javascript deps and preps for LN work",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunelson/ln-js.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Lu Nelson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lunelson/ln-js/issues"
+  },
+  "homepage": "https://github.com/lunelson/ln-js#readme"
+}
