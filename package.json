@@ -6,6 +6,7 @@
   "scripts": {
     "test": "test"
   },
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lunelson/ln-js.git"
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/lunelson/ln-js/issues"
   },
-  "homepage": "https://github.com/lunelson/ln-js#readme"
+  "homepage": "https://github.com/lunelson/ln-js#readme",
+  "dependencies": {
+    "lazysizes": "^1.5.0"
+  }
 }
