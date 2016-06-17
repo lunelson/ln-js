@@ -1,18 +1,18 @@
 /// Promise polyfill https://github.com/taylorhakes/promise-polyfill
 /// alternative -- https://github.com/getify/native-promise-only
-if (typeof Promise !== 'function') { window.Promise = require('promise-polyfill'); }
+if (typeof Promise !== 'function') { window.Promise = require('native-promise-only'); }
 
 // general
-var Dispatcher        = require('../Dispatcher');
-var Utils             = require('../Utils');
+var Dispatcher        = require('./Dispatcher');
 
 // pjax specific stuff
-var Cache      = require('./Cache');
-var Dom        = require('./Dom');
-var History    = require('./History');
-var Prefetch   = require('./Prefetch');
-var Transition = require('./Transition');
-var View       = require('./View');
+var Cache      = require('./Pjax/Cache');
+var Dom        = require('./Pjax/Dom');
+var History    = require('./Pjax/History');
+var Prefetch   = require('./Pjax/Prefetch');
+var Transition = require('./Pjax/Transition');
+var View       = require('./Pjax/View');
+var Utils      = require('./Pjax/Utils');
 
 
 /// get current URL
@@ -32,7 +32,7 @@ function onLinkClick(event) {
   var element = event.target;
   // traverse up nodeList to first link w href
   while (element && !element.href) { element = element.parentNode; }
-  if (Pjax.validLink(element, event)) {
+  if (Utils.validLink(element, event)) {
     event.stopPropagation();
     event.preventDefault();
     Dispatcher.trigger('linkClick', element);
@@ -45,14 +45,14 @@ function onStateChange() {
   // get new URL
   var newUrl = getCurrentUrl();
   // if trans in prog, force go to new URL
-  if (this.transitionInProgress) forceGoTo(newUrl);
+  if (Pjax.transitionInProgress) forceGoTo(newUrl);
   // bail out, if current URL is same as new URL
   if (History.currentStatus().url === newUrl) return false;
   // otherwise....
   History.add(newUrl);
-  var newContainer = this.load(newUrl);
-  var transition = Object.create(this.getTransition());
-  this.transitionInProgress = true;
+  var newContainer = Pjax.load(newUrl);
+  var transition = Object.create(Pjax.getTransition());
+  Pjax.transitionInProgress = true;
   Dispatcher.trigger('stateChange',
     History.currentStatus(),
     History.prevStatus()
@@ -61,8 +61,8 @@ function onStateChange() {
     Dom.getContainer(),
     newContainer
   );
-  newContainer.then( this.onContainerLoad.bind(this) );
-  transitionInstance.then( this.onTransitionEnd.bind(this) );
+  newContainer.then( onContainerLoad );
+  transitionInstance.then( onTransitionEnd );
 }
 
 /// containerLoad handler
@@ -96,30 +96,9 @@ var Pjax = module.exports = {
 
   /// what transition to use
   /// * either change this...
-  defaultTransition: require('./HideShowTransition'),
+  defaultTransition: require('./Pjax/HideShowTransition'),
   /// ...or change this, to affect defaults
   getTransition: function() { return this.defaultTransition; },
-
-  /// whether a link should be followed
-  validLink: function(element, event) {
-    if (!history.pushState) return false;
-    /// user
-    if (!element || !element.href) return false;
-    /// middle click, cmd click, and ctrl click
-    if (event.which > 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
-    /// ignore target with _blank target
-    if (element.target && element.target === '_blank') return false;
-    /// check if it's the same domain
-    if (window.location.protocol !== element.protocol || window.location.hostname !== element.hostname) return false;
-    /// check if the port is the same
-    if (Utils.getPort() !== Utils.getPort(element.port)) return false;
-    /// ignore case when a hash is being tacked on the current url
-    if (element.href.indexOf('#') > -1) return false;
-    /// in case you're trying to load the same page
-    if (Utils.cleanLink(element.href) == Utils.cleanLink(location.href)) return false;
-    if (element.classList.contains('no-barba')) return false;
-    return true;
-  },
 
   /// initialize
   init: function() {
@@ -173,5 +152,6 @@ var Pjax = module.exports = {
   History: History,
   Prefetch: Prefetch,
   Transition: Transition,
+  Utils: Utils,
   View: View
 };

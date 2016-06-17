@@ -1,4 +1,4 @@
-var Utils = require('../Utils');
+var Utils = require('./Utils');
 
 /// TRANSITION
 var Transition = module.exports = {

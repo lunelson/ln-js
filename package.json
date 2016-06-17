@@ -1,6 +1,7 @@
 {
   "name": "ln-js",
   "version": "0.0.6",
+  "registry": "github",
   "description": "javascript deps and preps for LN work",
   "main": "index.js",
   "scripts": {
@@ -21,6 +22,10 @@
   },
   "homepage": "https://github.com/lunelson/ln-js#readme",
   "dependencies": {
-    "lazysizes": "^1.5.0"
+    "native-promise-only": "^0.8.0-a"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babelify": "^7.3.0"
   }
 }

@@ -1,5 +1,5 @@
 var Dispatcher = require('../Dispatcher');
-var Utils      = require('../Utils');
+var Utils      = require('./Utils');
 
 /// VIEW
 var View = module.exports = {

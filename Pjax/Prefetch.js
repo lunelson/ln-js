@@ -1,6 +1,4 @@
-var Utils = require('../Utils');
-
-var Pjax  = require('./Pjax');
+var Utils = require('./Utils');
 var Cache = require('./Cache');
 
 function onLinkEnter(event) {
@@ -13,7 +11,7 @@ function onLinkEnter(event) {
   // get the URL
   var url = el.href;
   // if link is valid...
-  if (Pjax.validLink(el, event) && !Cache.get(url)) {
+  if (Utils.validLink(el, event) && !Cache.get(url)) {
     // get the content
     var xhr = Utils.xhr(url);
     // bung it in the cache
