@@ -1,5 +1,5 @@
-var Utils = require('./utils');
-var Cache = require('./cache');
+var Utils = require('./Utils');
+var Cache = require('./Cache');
 
 function onLinkEnter(event) {
   // get event target

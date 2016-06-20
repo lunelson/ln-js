@@ -13,10 +13,6 @@ var History = module.exports = {
     });
   },
 
-  last: function() {
-    return this.history[this.history.length - 1];
-  },
-
   currStatus: function() {
     return this.history[this.history.length - 1];
   },

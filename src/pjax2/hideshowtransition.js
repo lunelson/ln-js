@@ -1,4 +1,4 @@
-var Transition = require('./transition');
+var Transition = require('./Transition');
 
 var HideShowTransition = module.exports = Transition.extend({
   start: function() {

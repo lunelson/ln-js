@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var PrevLink = document.querySelector('a.prev');
   var NextLink = document.querySelector('a.next');
 
-  var Pjax = require('../../src/Pjax');
-  var Dispatcher = require('../../src/Dispatcher');
+  var Pjax = require('../../src/pjax');
+  var Dispatcher = require('../../src/dispatcher');
 
   Pjax.init();
   Pjax.Prefetch.init();
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function getNewPageFile () {
-    return Pjax.History.currentStatus().url.split('/').pop();
+    return Pjax.History.currStatus().url.split('/').pop();
   }
 
 });

@@ -3,16 +3,16 @@
 if (typeof Promise !== 'function') { window.Promise = require('native-promise-only'); }
 
 // general
-var Dispatcher        = require('./Dispatcher');
+var Dispatcher        = require('./dispatcher');
 
 // pjax specific stuff
-var Cache      = require('./Pjax/Cache');
-var Dom        = require('./Pjax/Dom');
-var History    = require('./Pjax/History');
-var Prefetch   = require('./Pjax/Prefetch');
-var Transition = require('./Pjax/Transition');
-var View       = require('./Pjax/View');
-var Utils      = require('./Pjax/Utils');
+var Cache      = require('./pjax/cache');
+var Dom        = require('./pjax/dom');
+var History    = require('./pjax/history');
+var Prefetch   = require('./pjax/prefetch');
+var Transition = require('./pjax/transition');
+var View       = require('./pjax/view');
+var Utils      = require('./pjax/utils');
 
 
 /// get current URL
@@ -44,11 +44,14 @@ function onLinkClick(event) {
 }
 
 /// stateChange handler
-function onStateChange(arg) {
+function onStateChange() {
+
+  console.log(History.currStatus());
+
   // get new URL
   var newUrl = getCurrentUrl();
   // bail out, if current URL is same as new URL
-  if (History.currentStatus().url === newUrl) return false;
+  if (History.currStatus().url === newUrl) return false;
   // check if transition in progress
   if (Pjax.transitionInProgress) {
     /// if trans in prog, force go to new URL
@@ -57,7 +60,7 @@ function onStateChange(arg) {
   }
   // otherwise...
   // fire internal events
-  Dispatcher.trigger('stateChange', History.currentStatus(), History.prevStatus());
+  Dispatcher.trigger('stateChange', History.currStatus(), History.prevStatus());
   // add URL to internal history manager
   History.add(newUrl);
   // get the promise for the new container
@@ -75,10 +78,10 @@ function onStateChange(arg) {
 
 /// containerLoad handler
 function onContainerLoad(container) {
-  var currentStatus = History.currentStatus();
-  currentStatus.namespace = Dom.getNamespace(container);
-  Dispatcher.trigger('newPageReady',
-    History.currentStatus(),
+  var currStatus = History.currStatus();
+  currStatus.namespace = Dom.getNamespace(container);
+  Dispatcher.trigger('containerLoad',
+    History.currStatus(),
     History.prevStatus(),
     container
   );
@@ -88,7 +91,7 @@ function onContainerLoad(container) {
 function onTransitionEnd() {
   Pjax.transitionInProgress = false;
   Dispatcher.trigger('transitionEnd',
-    History.currentStatus(),
+    History.currStatus(),
     History.prevStatus()
   );
 }
@@ -120,9 +123,9 @@ var Pjax = module.exports = {
     );
 
     // fire custom events for the current view.
-    Dispatcher.trigger('stateChange', History.currentStatus());
-    Dispatcher.trigger('newPageReady', History.currentStatus(), {}, container);
-    Dispatcher.trigger('transitionEnd', History.currentStatus());
+    Dispatcher.trigger('stateChange', History.currStatus());
+    Dispatcher.trigger('containerLoad', History.currStatus(), {}, container);
+    Dispatcher.trigger('transitionEnd', History.currStatus());
 
     // bind native events
     document.addEventListener('click', onLinkClick);
