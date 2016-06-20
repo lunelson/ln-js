@@ -1,0 +1,40 @@
+{
+  // I want to use babel-eslint for parsing!
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    // I write for browser
+    "browser": true,
+    // in CommonJS
+    "node": true
+  },
+  // To give you an idea how to override rule options:
+  "rules": {
+    "quotes": [2, "single"],
+    "eol-last": [0],
+    "no-mixed-requires": [0],
+    "no-underscore-dangle": [0],
+    // babel rules
+    // https://github.com/babel/eslint-plugin-babel#rules
+    "babel/generator-star-spacing": 1,
+    "babel/new-cap": 1,
+    "babel/array-bracket-spacing": 1,
+    "babel/object-curly-spacing": 0,
+    "babel/object-shorthand": 0,
+    "babel/arrow-parens": 1,
+    "babel/no-await-in-loop": 1,
+    "babel/flow-object-type": 1,
+    // react rules
+    // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+  },
+  "plugins": [
+    "babel",
+    "react"
+  ]
+}

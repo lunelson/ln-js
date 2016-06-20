@@ -20,48 +20,56 @@ function getCurrentUrl() { return Utils.cleanLink( Utils.getCurrentUrl() ); }
 
 // TODO: rename the following two functions
 /// go to
-function goTo(url) {
-  window.history.pushState(null, null, url);
-  onStateChange();
-}
+// function goTo(url) {
+//   window.history.pushState(null, null, url);
+//   onStateChange();
+// }
 /// force go to
 function forceGoTo(url) { window.location = url; }
 
 /// linkClick handler
 function onLinkClick(event) {
+  // resolve the element
   var element = event.target;
-  // traverse up nodeList to first link w href
   while (element && !element.href) { element = element.parentNode; }
+  // check if element is valid
   if (Utils.validLink(element, event)) {
     event.stopPropagation();
     event.preventDefault();
+    // fire and update
     Dispatcher.trigger('linkClick', element);
-    goTo(element.href);
+    window.history.pushState(null, null, element.href);
+    onStateChange();
   }
 }
 
 /// stateChange handler
-function onStateChange() {
+function onStateChange(arg) {
   // get new URL
   var newUrl = getCurrentUrl();
-  // if trans in prog, force go to new URL
-  if (Pjax.transitionInProgress) forceGoTo(newUrl);
   // bail out, if current URL is same as new URL
   if (History.currentStatus().url === newUrl) return false;
-  // otherwise....
+  // check if transition in progress
+  if (Pjax.transitionInProgress) {
+    /// if trans in prog, force go to new URL
+    /// NB. this is where we'd have to cancel the current transition and start another one
+    forceGoTo(newUrl);
+  }
+  // otherwise...
+  // fire internal events
+  Dispatcher.trigger('stateChange', History.currentStatus(), History.prevStatus());
+  // add URL to internal history manager
   History.add(newUrl);
-  var newContainer = Pjax.load(newUrl);
+  // get the promise for the new container
+  var gotContainer = Pjax.load(newUrl);
+  // this should not at all be necessary
   var transition = Object.create(Pjax.getTransition());
   Pjax.transitionInProgress = true;
-  Dispatcher.trigger('stateChange',
-    History.currentStatus(),
-    History.prevStatus()
-  );
   var transitionInstance = transition.init(
     Dom.getContainer(),
-    newContainer
+    gotContainer
   );
-  newContainer.then( onContainerLoad );
+  gotContainer.then( onContainerLoad );
   transitionInstance.then( onTransitionEnd );
 }
 
@@ -139,7 +147,7 @@ var Pjax = module.exports = {
       },
       // error
       function() {
-        forceGoTo(url);
+        window.location = url;
         deferred.reject();
       }
     );

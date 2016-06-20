@@ -1,0 +1,1406 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"const",
+				"constructor"
+			],
+			[
+				"text",
+				"textEndHeight"
+			],
+			[
+				"remove",
+				"removeAttr	.removeAttr()"
+			],
+			[
+				"wrap",
+				"wrapInner	.wrapInner()"
+			],
+			[
+				"miniPostl",
+				"miniPostLess"
+			],
+			[
+				"you",
+				"youtubes"
+			],
+			[
+				"loading",
+				"loadingMessage"
+			],
+			[
+				"inner",
+				"innerHtml"
+			],
+			[
+				"posts",
+				"posts_to_load_count"
+			],
+			[
+				"loaded",
+				"loaded_post_count"
+			],
+			[
+				"a",
+				"app.js"
+			],
+			[
+				"max",
+				"maxInfoHeight"
+			],
+			[
+				"medien",
+				"medienPicHeight"
+			],
+			[
+				"mom",
+				"moment-with-locales.js"
+			],
+			[
+				"twitt",
+				"twitterFeed"
+			],
+			[
+				"q",
+				"qsa	querySelectorAll"
+			],
+			[
+				"for",
+				"forin	for in own properties"
+			],
+			[
+				"document",
+				"documentElement"
+			],
+			[
+				"remo",
+				"removeClass	.removeClass()"
+			],
+			[
+				"has",
+				"hasClass	.hasClass()"
+			],
+			[
+				"add",
+				"addClass	.addClass()"
+			],
+			[
+				"fil",
+				"filteredFilterables"
+			],
+			[
+				"ac",
+				"addClass	.addClass()"
+			],
+			[
+				"rc",
+				"removeClass	.removeClass()"
+			],
+			[
+				"filte",
+				"filterableLists"
+			],
+			[
+				"conten",
+				"contentModule"
+			],
+			[
+				"pare",
+				"ls.parent-fit.js"
+			],
+			[
+				"resiz",
+				"resizeTemplates"
+			],
+			[
+				"new_",
+				"new_eventid"
+			],
+			[
+				"fn",
+				"fn1	one-line function"
+			],
+			[
+				"data",
+				"data-bottom-top"
+			],
+			[
+				"ori",
+				"origWidth"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 1091,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/nextprev/main.es",
+			"settings":
+			{
+				"buffer_size": 2058,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 368.0,
+		"last_filter": "rename",
+		"selected_items":
+		[
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"lint mode",
+				"SublimeLinter: Choose Lint Mode"
+			],
+			[
+				"ssjson",
+				"Set Syntax: JSON (Babel)"
+			],
+			[
+				"linter sett",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"disbl",
+				"Package Control: Disable Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"ssjso",
+				"Set Syntax: JSON"
+			],
+			[
+				"ssjs",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"trim",
+				"Trimmer: Delete empty lines."
+			],
+			[
+				"wrap",
+				"Word Wrap: Toggle"
+			],
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"permi",
+				"Permute Lines: Unique"
+			],
+			[
+				"mvoe",
+				"File: Move"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"trimm",
+				"Trimmer: Delete empty lines."
+			],
+			[
+				"empty",
+				"Trimmer: Delete empty lines."
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"new",
+				"ANF: New File"
+			],
+			[
+				"lint",
+				"SublimeLinter: Toggle Linter"
+			],
+			[
+				"edit",
+				"Color Scheme: Editor (pick installed theme)"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ssscs",
+				"Set Syntax: SCSS"
+			],
+			[
+				"permut",
+				"Permute Lines: Unique"
+			],
+			[
+				"ssliq",
+				"Set Syntax: HTML (Liquid)"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"sshtml",
+				"Set Syntax: HTML Extended"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"sspug",
+				"Set Syntax: Pug"
+			],
+			[
+				"disc",
+				"Package Control: Discover Packages"
+			],
+			[
+				"ssmd",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"ssvc",
+				"Set Syntax: Vue Component"
+			],
+			[
+				"ssvue",
+				"Set Syntax: Vue Component"
+			],
+			[
+				"pretty",
+				"HTMLPrettify"
+			],
+			[
+				"reveal",
+				"File: Reveal"
+			],
+			[
+				"marked",
+				"Marked"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"sssc",
+				"Set Syntax: SCSS"
+			],
+			[
+				"ssjade",
+				"Set Syntax: Jade"
+			],
+			[
+				"past",
+				"Text Pastry: Paste Lines"
+			],
+			[
+				"db",
+				"DocBlockr: Decorate line comment"
+			],
+			[
+				"ssh",
+				"Set Syntax: HTML"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"dele",
+				"File: Delete"
+			],
+			[
+				"insert",
+				"Emoji: Insert Emoji"
+			],
+			[
+				"emoj",
+				"Emoji: Insert Emoji"
+			],
+			[
+				"sshand",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"npm",
+				"npm: Install Package"
+			],
+			[
+				"disabl",
+				"Package Control: Disable Package"
+			],
+			[
+				"ssja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"pastr",
+				"Text Pastry: Paste Lines"
+			],
+			[
+				"pas",
+				"Text Pastry: Range"
+			],
+			[
+				"figl",
+				"Figlet: Add Text"
+			],
+			[
+				"sstext",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"dbd",
+				"DocBlockr: Decorate line comment"
+			],
+			[
+				"perm",
+				"Permute Lines: Unique"
+			],
+			[
+				"mark",
+				"Marked"
+			],
+			[
+				"low",
+				"Convert Case: Lower Case"
+			],
+			[
+				"dire",
+				"dired"
+			],
+			[
+				"sssh",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"dired",
+				"dired"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"reame",
+				"File: Rename"
+			],
+			[
+				"glue",
+				"Glue - Launch"
+			],
+			[
+				"term",
+				"Terminal: Open"
+			],
+			[
+				"remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instla",
+				"Package Control: Install Package"
+			],
+			[
+				"disco",
+				"Package Control: Discover Packages"
+			],
+			[
+				"ssajd",
+				"Set Syntax: Jade"
+			],
+			[
+				"add r",
+				"Package Control: Add Repository"
+			],
+			[
+				"ssjad",
+				"Set Syntax: Jade"
+			],
+			[
+				"uuid",
+				"Generate UUID v4"
+			],
+			[
+				"extra",
+				"PackageResourceViewer: Extract Package"
+			],
+			[
+				"commeb",
+				"Snippet: Idiomatic CSS - Section Comment Block"
+			],
+			[
+				"package",
+				"PackageResourceViewer: Extract Package"
+			],
+			[
+				"scheme",
+				"Color Scheme Editor: Edit current color scheme"
+			],
+			[
+				"json",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"pastry",
+				"Text Pastry: Range"
+			],
+			[
+				"ssj",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"ssscss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"marke",
+				"Marked"
+			],
+			[
+				"range",
+				"Text Pastry: Range"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"expo",
+				"Export to HTML: Show Export Menu"
+			],
+			[
+				"case",
+				"Convert Case: Lower Case"
+			],
+			[
+				"compare",
+				"Compare with..."
+			]
+		],
+		"width": 411.0
+	},
+	"console":
+	{
+		"height": 180.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/lunelson/Git/packages/ln-js",
+		"/Users/lunelson/Git/packages/ln-js/test/grid",
+		"/Users/lunelson/Git/packages/ln-js/test/nextprev"
+	],
+	"file_history":
+	[
+		"/Users/lunelson/Git/packages/ln-js/.eslintrc",
+		"/Users/lunelson/Git/tests/ln-js-tests/package.json",
+		"/Users/lunelson/Git/packages/ln-js/Dispatcher.js",
+		"/Users/lunelson/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/lunelson/Desktop/myTrans.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/Dom.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/View.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/Cache.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/Transition.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/HideShowTransition.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/index.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/History.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/Prefetch.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/Pjax.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/DefaultTransition.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Pjax/HistoryManager.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Dispatcher.js",
+		"/Users/lunelson/Git/packages/ln-js/lib/Media.js",
+		"/Users/lunelson/Git/packages/ln-js/Pjax/index.js",
+		"/Users/lunelson/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter/Oceanic Next (SL).tmTheme",
+		"/Users/lunelson/Git/learning/learn-barbajs/.gitignore",
+		"/Users/lunelson/Git/learning/learn-barbajs/site/.gitignore",
+		"/Users/lunelson/Git/learning/learn-vuejs/lesson_6/index.html",
+		"/Users/lunelson/Git/learning/learn-vuejs/lesson_5/index.html",
+		"/Users/lunelson/Git/learning/learn-vuejs/lesson_4/index.html",
+		"/Users/lunelson/Git/learning/learn-vuejs/lesson_3b/index.html",
+		"/Users/lunelson/Git/learning/learn-vuejs/lesson_3/done.html",
+		"/Users/lunelson/Git/learning/learn-vuejs/lesson_3/index.html",
+		"/Users/lunelson/Desktop/jspm-test/test.vue",
+		"/Users/lunelson/Git/projects/state-rchb-proto/TODO.md",
+		"/Users/lunelson/Git/projects/state-rchb-proto/NEXT.md",
+		"/Users/lunelson/Desktop/linkz.txt",
+		"/Users/lunelson/Git/projects/ln-githubio2/public/test/typo/local.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass/dist/ln-layout/_ln-layout-grid.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass/_hide/test/_holding/dev-debug/wrap2/index.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass/dist/ln-layout/_ln-layout-util.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/lib-jquery.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-post.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-prodns.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_mini-prodns.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_page-contacts.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_site-head.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass/_hide/test/typo3/index.css",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass/dist/ln-typo/_ln-typo-mixins.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass/dist/ln-typo/_ln-typo-util.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass/_hide/test/typo3/index.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/test/typo2/local.es",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/module-page.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/module-root.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/module-mini.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/module-site.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/lib-win.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/calendar-stream-custom.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/calendar-stream-termin.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/cust-serie.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_cust-serie.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/test/video2/local.es",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/_object.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/test/video2/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/calendar-stream.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/test/video2/local.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/object/_lazyvideo.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/test/video2/lazy-video.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/lib-carousel.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/app.es",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-mixins.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-content.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/prodn-tickets.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/site/site-head.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/_ante.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/README.md",
+		"/Users/lunelson/Git/projects/state-rchb-proto/NOTES.md",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-mensch.jade",
+		"/Users/lunelson/Git/projects/state-rchb-wp/public/wp-content/themes/rundfunkchor_1/modules/static/root-medien.php",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/_elem.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_page-content.scss",
+		"/Users/lunelson/Downloads/Collage.jsx",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-files.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-contacts.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/chor/serien/proj/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-zitat.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_page-zitat.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-sponsors.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_page-prodns.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/_module.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/cust-menschen.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_page-menschen.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/service/presse/post/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/service/kontakt/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_includes/data.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-prodns.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/proj-prodns.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/cust-serien.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-header.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-h1.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/root/root-social.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/root/root-page.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/root/root-page-hero.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/site/site-foot.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/site/site-menu.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_site-foot.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_mini-menu.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-menu.jade",
+		"/Users/lunelson/.ssh/id_rsa",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-medium.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/cust-medien.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_cust-medien.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_includes/functions.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/chor/medien/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-block.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/lib-social.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/gulpfile.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/view-calendar.js",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/cust/calendar-stream-termin.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/cust/calendar-list-termin.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/cust/calendar-list.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_calendar.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_calendar-termin.scss",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/cust/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/cust/calendar-stream.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/.sass-cache/88ee8bff1523fe742c82c6bb4c76970773c0ae59/_calendar-section.scssc",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/kalender/index.jade",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/mini/planning.txt",
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/kalender/list.jade"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 103.0,
+		"where_history":
+		[
+			"/Users/lunelson/Git/packages/ln-js/lib/Pjax",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/view",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/module, /Users/lunelson/Git/projects/state-rchb-proto/public/view",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/vendor/ln-sass/dist",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/_lib/ln-sass/dist",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/_vendor/ln-sass/dist",
+			"/Users/lunelson/Git/projects/state-rchb-proto/public",
+			"/Users/lunelson/Git/Projects/ln-sass/dist",
+			"/Users/lunelson/Git/Projects/ln-prototypes,**/*.jade",
+			"/Users/lunelson/Git/Projects/ln-prototypes, **/layout.jade",
+			"/Users/lunelson/Git/Projects/ln-prototypes, layout.jade",
+			"/Users/lunelson/Git/Projects/ln-prototypes",
+			"/Users/lunelson/Git/Projects/ln-prototypes,**/*.jade",
+			"/Users/lunelson/Git/Projects/ln-prototypes/,**/*.jade",
+			"/Users/lunelson/Git/Projects/ln-prototypes/,*.jade",
+			"/Users/lunelson/Git/Projects/ln-prototypes,*.jade",
+			"/Users/lunelson/Git/Projects/ln-prototypes, index.jade",
+			"/Users/lunelson/Git/Projects/ln-prototypes,/dev-*",
+			"/Users/lunelson/Git/Projects/ln-prototypes/dev-*",
+			"/Users/lunelson/Git/Projects/ln-sass/src",
+			"/Users/lunelson/Git/Projects/ln-sass",
+			"/Users/lunelson/Git/Projects/LN-CodePens/_vendor/ln-sass/stylesheets",
+			"/Users/lunelson/Library/Mail/V2/MailData",
+			"/Users/lunelson/Library/Mail/V3/MailData",
+			"/Users/lunelson/Library/Mail"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"javascript",
+			"In",
+			"Out",
+			"Containe",
+			"fade",
+			"consl",
+			"barba-",
+			"oldStartCompleted",
+			"newStartCompleted",
+			"onEnter",
+			"onLeave",
+			"Transition.init",
+			"Pjax.Cache",
+			"Pjax",
+			"this.onLinkEnter.bind(this)",
+			"loadedContainer",
+			"completion",
+			"loading",
+			"newContainerPromise",
+			"loading",
+			"loadPromise",
+			"_loadComplete",
+			"newContainerReady",
+			"this.deferred",
+			"transitionComplete",
+			"newContainerPromise",
+			"done",
+			"onStart",
+			"start",
+			"newContainerReady.promise",
+			"deferred",
+			"newContainerLoading",
+			"DefaultTransition",
+			"_this",
+			"transitionInProgress",
+			"greenLight",
+			": function",
+			"transitionCompleted",
+			"onNewContainerLoaded",
+			"this.forceGoTo",
+			"forceGoTo",
+			": function",
+			"forceGoTo",
+			"goTo",
+			"Pjax.goTo",
+			"this.getCurrentUrl",
+			"getCurrentUrl",
+			"bindEvents",
+			"    //",
+			"this.Dom",
+			"this.History",
+			"initStateChange",
+			"linkClicked",
+			"evt",
+			"preventCheck",
+			"event, element",
+			"greenLight(event, element)",
+			"el",
+			"evt",
+			"validLink",
+			"preventCheck",
+			"this.preventCheck",
+			"evt",
+			"this.Dom",
+			"bindEvents",
+			"Pjax.start",
+			"DefaultTransition",
+			"transitionDefault",
+			"transition",
+			"DefaultTransition",
+			"nb.",
+			"element",
+			"parseContainer",
+			"wrapperID",
+			"element",
+			"transitionProgress",
+			"HistoryManager",
+			"HideShowTransition",
+			"BaseCache",
+			"BaseTransition",
+			"BaseView",
+			"HistoryManager",
+			"BaseTransition",
+			"Barba",
+			"line",
+			"onLoad",
+			"vue",
+			"app",
+			"doSomething",
+			"charset=",
+			".custom-file-input",
+			"input[type='text'], ",
+			"darkblue",
+			"#{color(tiefgrau)}",
+			"> <",
+			"60p",
+			"#000000",
+			"60px",
+			"• ",
+			"%w#{",
+			"$n",
+			"%w#{",
+			"%w#{$key}",
+			"length($media-keys)",
+			"nth($media-keys, $n)",
+			"$test",
+			"#{$i}",
+			"%w#{$n}",
+			"$n",
+			"$i",
+			"to",
+			"power",
+			"length($list)",
+			"data-filter=",
+			"filter",
+			".s-",
+			"size",
+			"actions",
+			"action",
+			" !important",
+			"action-info",
+			"video",
+			"map-get",
+			"@function size",
+			"@mixin size",
+			"&%t--",
+			"value",
+			","
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"newContainerPromise",
+			"transitionRunning",
+			"validLink",
+			"transitionEnd",
+			"onContainerLoad",
+			"stateChange",
+			"Pjax.init",
+			"transitionInProgress",
+			"History",
+			"DefaultTransition",
+			"Cache",
+			"Transition",
+			"View",
+			"calendar-stream-termin",
+			"calendar-stream",
+			"calendar-list",
+			"calendar-list-termin",
+			"calendar-stream-termin",
+			"calendar-stream",
+			"calendar-list",
+			"$.",
+			"$layout-align",
+			"hold--1-1",
+			".hold--",
+			"/_vendor",
+			"$media-curr-alias",
+			"assets/js/vendor",
+			"media-init--object",
+			"$media-spec",
+			"$base-spec"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								744,
+								744
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": 27,
+								"count": 79,
+								"modified": false,
+								"selection": false,
+								"status": -1,
+								"syntax": "plain text"
+							},
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/Theme - Afterglow/Prefs/Langs/npm JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "test/nextprev/main.es",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2058,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": 0,
+								"count": 74,
+								"modified": false,
+								"selection": false,
+								"status": -1,
+								"syntax": "plain text"
+							},
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/SassQuatch.sublime-build",
+	"project": "ln-js.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"calenda",
+				"state-rchb-proto/public/_module/cust/calendar-stream-custom.jade"
+			],
+			[
+				"img",
+				"state-rchb-proto/public/_includes/utilities/img3.jade"
+			],
+			[
+				"cust-serie",
+				"state-rchb-proto/public/assets/stylesheets/module/_cust-serie.scss"
+			],
+			[
+				"carousel",
+				"state-rchb-proto/public/assets/javascripts/module/lib-carousel.js"
+			],
+			[
+				"cust",
+				"state-rchb-proto/public/assets/stylesheets/module/_cust-serie.scss"
+			],
+			[
+				"layout-ut",
+				"ln-sass/dist/ln-layout/_ln-layout-util.scss"
+			],
+			[
+				"page-mixin",
+				"state-rchb-proto/public/_module/page/page-mixins.jade"
+			],
+			[
+				"page-content",
+				"state-rchb-proto/public/_module/page/page-content.jade"
+			],
+			[
+				"prodn-tick",
+				"state-rchb-proto/public/_module/cust/prodn-tickets.jade"
+			],
+			[
+				"site-head",
+				"state-rchb-proto/public/_module/site/site-head.jade"
+			],
+			[
+				"stream-termin",
+				"state-rchb-proto/public/_module/cust/calendar-stream-termin.jade"
+			],
+			[
+				"readme",
+				"state-rchb-proto/README.md"
+			],
+			[
+				"page-header",
+				"state-rchb-proto/public/_module/page/page-header.jade"
+			],
+			[
+				"calendar-stream",
+				"state-rchb-proto/public/_module/cust/calendar-stream-termin.jade"
+			],
+			[
+				"mini-p",
+				"state-rchb-proto/public/_module/mini/mini-prodns.jade"
+			],
+			[
+				"mini",
+				"state-rchb-proto/public/assets/stylesheets/module/_mini-prodns.scss"
+			],
+			[
+				"module",
+				"state-rchb-proto/public/assets/stylesheets/_module.scss"
+			],
+			[
+				"cust-ser",
+				"state-rchb-proto/public/_module/cust/cust-serie.jade"
+			],
+			[
+				"site",
+				"state-rchb-proto/public/_module/site/site-head.jade"
+			],
+			[
+				"page-h1",
+				"state-rchb-proto/public/_module/page/page-h1.jade"
+			],
+			[
+				"root-social",
+				"state-rchb-proto/public/_module/root/root-social.jade"
+			],
+			[
+				"root-page",
+				"state-rchb-proto/public/_module/root/root-page.jade"
+			],
+			[
+				"llayou",
+				"ln-sass/dist/ln-layout/_ln-layout-util.scss"
+			],
+			[
+				"root-s",
+				"state-rchb-proto/public/module/root/root-social.jade"
+			],
+			[
+				"mini-scia",
+				"state-rchb-proto/public/assets/stylesheets/module/_mini-social.scss"
+			],
+			[
+				"mini-social",
+				"state-rchb-proto/public/module/mini/mini-social.jade"
+			],
+			[
+				"root-soci",
+				"state-rchb-proto/public/module/root/root-social.jade"
+			],
+			[
+				"root-medien",
+				"state-rchb-proto/public/module/root/root-medien.jade"
+			],
+			[
+				"rpc",
+				"state-rchb-proto/public/assets/stylesheets/module/_root-page-card.scss"
+			],
+			[
+				"root-meden",
+				"state-rchb-proto/public/assets/stylesheets/module/_root-medien.scss"
+			],
+			[
+				"root-page.",
+				"state-rchb-proto/public/assets/stylesheets/module/_root-page.scss"
+			],
+			[
+				"media-util",
+				"ln-sass/dist/ln-media/_ln-media-util.scss"
+			],
+			[
+				"module.sc",
+				"state-rchb-proto/public/assets/stylesheets/_module.scss"
+			],
+			[
+				"carouse",
+				"state-rchb-proto/public/assets/javascripts/module/lib-carousel.js"
+			],
+			[
+				"page.js",
+				"state-rchb-proto/public/assets/javascripts/module/module-page.js"
+			],
+			[
+				"root-page-hero",
+				"state-rchb-proto/public/assets/stylesheets/module/_root-page-hero.scss"
+			],
+			[
+				"gulp",
+				"state-rchb-proto/gulpfile.js"
+			],
+			[
+				"ln-media",
+				"ln-sass/dist/ln-media/_ln-media-base.scss"
+			],
+			[
+				"ln-mdia",
+				"ln-sass/dist/ln-media/_ln-media-util.scss"
+			],
+			[
+				"_mixin",
+				"state-rchb-proto/public/_mixins.jade"
+			],
+			[
+				"image",
+				"state-rchb-proto/public/_utilities/image.jade"
+			],
+			[
+				"plann",
+				"state-rchb-proto/docs--planning.md"
+			],
+			[
+				"icon",
+				"state-rchb-proto/public/_components/icon.jade"
+			],
+			[
+				"pack",
+				"ln-prototypes/package.json"
+			],
+			[
+				"start",
+				"ln-prototypes/start-bs.js"
+			],
+			[
+				"gulpfi",
+				"State-SNF/gulpfile.js"
+			],
+			[
+				"app",
+				"State-SNF/assets/css/app.scss"
+			],
+			[
+				"flick",
+				"State-SNF/assets/css/flickity.scss"
+			],
+			[
+				"conte",
+				"State-SNF/content.html"
+			],
+			[
+				"inde",
+				"State-SNF/index.html"
+			],
+			[
+				"",
+				"ktts-animation/_layout.jade"
+			],
+			[
+				"jade",
+				"ktts-animation/index.jade"
+			],
+			[
+				"combine",
+				"ktts-animation/img/combined.svg"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Git/projects/ln-githubio2/ln-githubio2.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 302.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

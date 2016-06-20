@@ -21,7 +21,7 @@ var Dispatcher = {
    * @param  {String} eventName
    * @param  {Function} function
    */
-  on: function(e, f) {
+  on(e, f) {
     this.events[e] = this.events[e] || [];
     this.events[e].push(f);
   },
@@ -33,7 +33,7 @@ var Dispatcher = {
    * @param  {String} eventName
    * @param  {Function} function
    */
-  off: function(e, f) {
+  off(e, f) {
     if(e in this.events === false)
       return;
 
@@ -47,7 +47,7 @@ var Dispatcher = {
    * @param  {String} eventName
    * @param {...*} args
    */
-  trigger: function(e) {//e, ...args
+  trigger(e) {//e, ...args
     if (e in this.events === false)
       return;
 
