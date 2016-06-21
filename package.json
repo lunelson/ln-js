@@ -26,6 +26,9 @@
   },
   "homepage": "https://github.com/lunelson/ln-js#readme",
   "dependencies": {
+    "bluebird": "^3.4.1",
+    "gsap": "^1.18.5",
+    "knot.js": "^1.1.1",
     "native-promise-only": "^0.8.0-a"
   },
   "devDependencies": {

@@ -16,35 +16,35 @@ var Dom = module.exports = {
   /// 1. place content in detached div
   /// 2. parse out <title> element text and set it
   /// 3. extract the newContainer element
-  parseResponse: function(responseText) {
-    var wrapper = document.createElement('div');
-    wrapper.innerHTML = responseText;
-    var titleEl = wrapper.querySelector('title');
+  parseNewContainer: function(responseText) {
+    var newWrapper = document.createElement('div');
+    newWrapper.innerHTML = responseText;
+    var titleEl = newWrapper.querySelector('title');
     if (titleEl)
       document.title = titleEl.textContent;
-    return this.getContainer(wrapper);
+    return this.currContainer(newWrapper);
   },
 
   /// get the wrapper
-  getWrapper: function() { return document.getElementById(this.wrapperId); },
+  currWrapper: function() { return document.getElementById(this.wrapperId); },
 
   /// get the container
   /// * accept a given wrapper, or use default wrapper
-  getContainer: function(wrapper) {
+  currContainer: function(wrapper) {
     if (!wrapper)
-      wrapper = this.getWrapper();
+      wrapper = this.currWrapper();
     if (!wrapper)
-      throw new Error('Barba.js: DOM not ready!');
-    var container = wrapper.querySelector('.' + this.containerClass);
+      throw new Error('pjax-g: DOM not ready');
+    var container = wrapper.querySelector(`.${this.containerClass}`);
     if (container && container.jquery)
       container = container[0];
     if (!container)
-      throw new Error('Barba.js: no container found');
+      throw new Error('pjax-g: no container found');
     return container;
   },
 
   /// get the namespace of the container
-  getNamespace: function(container) {
+  containerNamespace: function(container) {
     if (container && container.dataset) {
       return container.dataset[this.dataNamespace];
     } else if (container) {
@@ -54,8 +54,8 @@ var Dom = module.exports = {
   },
 
   /// put the container in to the wrapper, with visibility 'hidden'
-  putContainer: function(container) {
+  appendContainer: function(container) {
     container.style.visibility = 'hidden';
-    this.getWrapper().appendChild(container);
+    this.currWrapper().appendChild(container);
   }
 };

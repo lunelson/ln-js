@@ -9,7 +9,7 @@ var Utils = {
    * Return the current url
    *
    * @memberOf Barba.Utils
-   * @return {String} currentUrl
+   * @return {String} currUrl
    */
   getCurrentUrl: function() {
     return window.location.protocol + '//' +

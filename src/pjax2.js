@@ -1,26 +1,46 @@
-// Promise polyfill https://github.com/taylorhakes/promise-polyfill
-// alternative -- https://github.com/getify/native-promise-only
-if (typeof Promise !== 'function') { window.Promise = require('native-promise-only'); }
+
+// Promise polyfill
+// alt: https://github.com/taylorhakes/promise-polyfill
+// alt: https://github.com/getify/native-promise-only
+if (typeof Promise !== 'function') { window.Promise = require('bluebird'); }
 
 // general
-const Dispatcher   = require('./dispatcher');
 
 // pjax specific stuff
-const Cache        = require('./pjax2/cache');
-const Dom          = require('./pjax2/dom');
-const History      = require('./pjax2/history');
-const Prefetch     = require('./pjax2/prefetch');
-const Transition   = require('./pjax2/transition');
-const View         = require('./pjax2/view');
-const Utils        = require('./pjax2/utils');
+const Dispatcher   = require('./pjax2-dispatcher');
+const Transition = require('./pjax2-transition');
+const Dom          = require('./pjax2-dom');
+const Utils        = require('./pjax2-utils');
 
-const defaultTransition =  require('./pjax2/hideshowtransition');
+const Cache        = require('./pjax2/cache');
+const HistMgr      = require('./pjax2/history');
+const Prefetch     = require('./pjax2/prefetch');
+const View         = require('./pjax2/view');
+
+const defaultTransition =  require('./pjax2-transition-default');
 
 // log function for errors
 const log = (console) ? console.log.bind(console) : function(){}
 
 // get current URL
-function currentUrl() { return Utils.cleanLink( Utils.currentUrl() ); }
+function currUrl() { return Utils.cleanLink( Utils.currUrl() ); }
+
+// load a new page; return Promise
+function loadNewContainer(url) {
+  // TODO: make better conditional logic here, wrt cacheEnabled flag
+  // console.log(`cached: ${Cache.get(url)}`);
+  return Promise.resolve(Cache.get(url) || Utils.getHTML(url))
+  .then((html) => {
+    Cache.set(url, html);
+    var container = Dom.parseNewContainer(html);
+    Dom.appendContainer(container);
+    if (!Pjax.cacheEnabled) Cache.reset();
+    return container;
+  }, (error) => {
+      window.location = url;
+      console.log(error);
+  });
+}
 
 // click handler
 function handleClick(event) {
@@ -38,38 +58,44 @@ function handleClick(event) {
     // update and trigger stuff
     window.history.pushState(null, null, element.href);
     Dispatcher.trigger('linkClick', element);
-    handleStateChange();
+    this.lastClicked = element;
+    handleStateChange.call(this, element);
   }
 }
 
 // stateChange handler
-function handleStateChange() {
+function handleStateChange(anchorEl) {
+  // console.log(`current this reference is ${this}`);
 
   // get new URL, after push-/popstate action
-  var newUrl = currentUrl();
+  var newUrl = currUrl();
+  // console.log(`link is ${currUrl}`);
 
   // bail out, if this is the same as the one currently stored in history manager
   if (HistMgr.currStatus().url === newUrl) return false;
+  // console.log(`link is same as current?: ${HistMgr.currStatus().url === newUrl}`);
 
   // whatever the state of current load, we can re-assign it
-  this.newContainerLoad.cancel();
-  this.newContainerLoad = this.loadNewContainer(newUrl);
+  // this.newContainerLoad.cancel();
+  this.newContainerLoad = loadNewContainer(newUrl); // check
+  this.newContainerLoad.then(log);
+
 
   // ...and deal with transition accordingly
-  if (this.currTrans.progress < 1) {
+  if (this.currTrans.progress() > 0) {
       // if in progress, recover the current transition and run 'intro' of new one
-      this.transitionRun.cancel();
+      // this.transitionRun.cancel();
       this.transitionRun = Promise
-        .all(this.newContainerLoad, this.currTrans.recover())
-        // NB doIntro will receive container as first arg
-        .then(this.setCurrTrans(newUrl).doIntro);
+        .all([this.newContainerLoad, this.currTrans.recover()])
+        // NB runIntro will receive container as first arg
+        .then(this.setCurrTrans(newUrl).runIntro);
   } else {
       // ...otherwise run outro and intro of current
       this.transitionRun = Promise
         // NB reset previous transition, and set this.currTrans to new one, based on current link
-        .all(this.newContainerLoad, this.setCurrTrans(newUrl).doOutro(el))
-        // NB doIntro will receive container as first arg
-        .then(this.currTrans.doIntro);
+        .all([this.newContainerLoad, this.setCurrTrans(newUrl).runOutro(anchorEl)])
+        // NB runIntro will receive container as first arg
+        .then(this.currTrans.runIntro);
   }
 
   // fire internal events -- isn't the info loged on this line out of date?
@@ -81,14 +107,14 @@ function handleStateChange() {
   // update statuses when container is loaded
   this.newContainerLoad.then((container)=>{
     var currStatus = HistMgr.currStatus();
-    currStatus.namespace = Dom.getNamespace(container);
+    currStatus.namespace = Dom.containerNamespace(container);
     Dispatcher.trigger('newContainerLoad',
       HistMgr.currStatus(),
       HistMgr.prevStatus(),
       container
     );
     return true;
-  }).catch(log).done();
+  }).catch(log);
 
   // fire transition end update
   this.transitionRun.then(()=>{
@@ -97,31 +123,37 @@ function handleStateChange() {
       HistMgr.prevStatus()
     );
     return true;
-  }).catch(log).done();
+  }).catch(log);
 }
 
 // PJAX
-var Pjax = module.exports = {
-  newContainerLoad: Promise.resolve(Dom.getContainer()),
+var Pjax = {
+  // newContainerLoad: Promise.resolve(Dom.currContainer()),
+  newContainerLoad: null,
   currTrans: null,
   setCurrTrans(url) {
     // reset this.currTrans
     // determine a new one, based on incoming URL
-    return this.currTrans = defaultTransition;
+    this.currTrans = defaultTransition;
+    return this.currTrans;
   },
 
   // whether to use cache
   cacheEnabled: true,
+  // last clicked element
+  lastClicked: null,
 
   // initialize
   init: function() {
 
     // get the container
-    var container = Dom.getContainer();
+    var container = Dom.currContainer();
+
+    this.setCurrTrans();
 
     HistMgr.add(
-      currentUrl(),
-      Dom.getNamespace(container)
+      currUrl(),
+      Dom.containerNamespace(container)
     );
 
     // fire custom events for the current view.
@@ -134,27 +166,14 @@ var Pjax = module.exports = {
     window.addEventListener('popstate', handleStateChange.bind(this));
   },
 
-  // load a new page; return Promise
-  loadNewContainer: function(url) {
-    // TODO: make better conditional logic here, wrt cacheEnabled flag
-    var gotHTML = Cache.get(url) || Utils.getHTML(url);
-    return Promise.resolve(gotHTML).then((html) => {
-      Cache.set(url, html);
-      var container = Dom.parseResponse(html);
-      Dom.putContainer(container);
-      if (!Pjax.cacheEnabled) Cache.reset();
-    }, (error) => {
-        console.log(error);
-        window.location = url;
-    });
-  },
-
   // exposure of other objects
   Cache: Cache,
   Dom: Dom,
-  History: History,
+  HistMgr: HistMgr,
   Prefetch: Prefetch,
   Transition: Transition,
   Utils: Utils,
   View: View
 };
+
+module.exports = Pjax;

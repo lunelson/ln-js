@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"last",
+				"lastClicked"
+			],
+			[
+				"newContain",
+				"newContainerLoad"
+			],
+			[
+				"pj",
+				"pjax2.js"
+			],
+			[
+				"newCont",
+				"newContainerLoad"
+			],
+			[
+				"pjax2",
+				"pjax2-transition.js"
+			],
+			[
 				"current",
 				"currentStatus	(history.js)"
 			],
@@ -149,9 +169,21 @@
 	"command_palette":
 	{
 		"height": 368.0,
-		"last_filter": "lower",
+		"last_filter": "move",
 		"selected_items":
 		[
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"reve",
+				"File: Reveal"
+			],
 			[
 				"lower",
 				"Convert Case: Lower Case"
@@ -163,10 +195,6 @@
 			[
 				"ssjs",
 				"Set Syntax: JavaScript (Babel)"
-			],
-			[
-				"rename",
-				"File: Rename"
 			],
 			[
 				"lint mode",
@@ -223,10 +251,6 @@
 			[
 				"empty",
 				"Trimmer: Delete empty lines."
-			],
-			[
-				"move",
-				"File: Move"
 			],
 			[
 				"new",
@@ -505,7 +529,7 @@
 				"Compare with..."
 			]
 		],
-		"width": 518.0
+		"width": 884.0
 	},
 	"console":
 	{
@@ -525,6 +549,23 @@
 	},
 	"file_history":
 	[
+		"/Users/lunelson/Git/packages/ln-js/src/emitter.js",
+		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/main.js",
+		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/main.es",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-dispatcher.js",
+		"/Users/lunelson/Git/packages/ln-js/src/gsap.js",
+		"/Users/lunelson/Git/packages/ln-js/package.json",
+		"/Users/lunelson/Git/packages/ln-js/sketches.js",
+		"/Users/lunelson/Git/packages/ln-js/src/gsap-full.js",
+		"/Users/lunelson/Git/packages/ln-js/src/gsap-lite.js",
+		"/Users/lunelson/Git/packages/ln-js/src/gsap-liteTL.js",
+		"/Users/lunelson/Git/packages/ln-js/src/gsap-liteTL2.js",
+		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/index.html",
+		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/4.html",
+		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/3.html",
+		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/2.html",
+		"/Users/lunelson/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/lunelson/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
 		"/Users/lunelson/Git/packages/ln-js/.eslintrc",
 		"/Users/lunelson/Git/packages/ln-js/src/Pjax/history.js",
 		"/Users/lunelson/Git/packages/ln-js/test/nextprev/main.es",
@@ -533,7 +574,6 @@
 		"/Users/lunelson/Git/packages/ln-js/src/Pjax/prefetch.js",
 		"/Users/lunelson/Git/packages/ln-js/src/Pjax/transition.js",
 		"/Users/lunelson/Git/packages/ln-js/src/Pjax/view.js",
-		"/Users/lunelson/Git/packages/ln-js/package.json",
 		"/Users/lunelson/Desktop/myTrans.js",
 		"/Users/lunelson/Git/packages/ln-js/ln-js.sublime-project",
 		"/Users/lunelson/Git/tests/ln-js-tests/package.json",
@@ -636,27 +676,11 @@
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/root/root-page.jade",
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/root/root-page-hero.jade",
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/site/site-foot.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/site/site-menu.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_site-foot.scss",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_mini-menu.scss",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-menu.jade",
-		"/Users/lunelson/.ssh/id_rsa",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-medium.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/cust-medien.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_cust-medien.scss",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_includes/functions.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/chor/medien/index.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/mini-block.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/lib-social.js",
-		"/Users/lunelson/Git/projects/state-rchb-proto/gulpfile.js",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/javascripts/module/view-calendar.js",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/cust/calendar-stream-termin.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/cust/calendar-list-termin.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/module/cust/calendar-list.jade"
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/site/site-menu.jade"
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -708,6 +732,49 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"el",
+			"doIntro",
+			"doOutro",
+			"console.",
+			"timeline",
+			".done();",
+			"Pjax",
+			"var",
+			" ",
+			"currentUrl",
+			"putContainer",
+			"parseResponse",
+			"next",
+			"getNamespace",
+			"currentWrapper",
+			"parseContainer",
+			"wrapper",
+			"getNamespace",
+			"getContainer",
+			"parseResponse",
+			"putContainer",
+			"wrapper",
+			"pjax-gs",
+			"getWrapper",
+			"Barba",
+			"History",
+			"new Promise()",
+			"var",
+			"window",
+			"return this.assign();",
+			"gsap.",
+			"/2",
+			"element",
+			"return",
+			"outro",
+			"TL",
+			"Start",
+			"global.",
+			"this",
+			"arr",
+			"ctrl",
+			"move",
+			"right",
 			"getCurrentUrl",
 			"last",
 			"prevStatus",
@@ -792,50 +859,7 @@
 			"this.History",
 			"initStateChange",
 			"linkClicked",
-			"evt",
-			"preventCheck",
-			"event, element",
-			"greenLight(event, element)",
-			"el",
-			"evt",
-			"validLink",
-			"preventCheck",
-			"this.preventCheck",
-			"evt",
-			"this.Dom",
-			"bindEvents",
-			"Pjax.start",
-			"DefaultTransition",
-			"transitionDefault",
-			"transition",
-			"DefaultTransition",
-			"nb.",
-			"element",
-			"parseContainer",
-			"wrapperID",
-			"element",
-			"transitionProgress",
-			"HistoryManager",
-			"HideShowTransition",
-			"BaseCache",
-			"BaseTransition",
-			"BaseView",
-			"HistoryManager",
-			"BaseTransition",
-			"Barba",
-			"line",
-			"onLoad",
-			"vue",
-			"app",
-			"doSomething",
-			"charset=",
-			".custom-file-input",
-			"input[type='text'], ",
-			"darkblue",
-			"#{color(tiefgrau)}",
-			"> <",
-			"60p",
-			"#000000"
+			"evt"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -843,6 +867,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"currUrl",
 			"newContainerPromise",
 			"transitionRunning",
 			"validLink",
