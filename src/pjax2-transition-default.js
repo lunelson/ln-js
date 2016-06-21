@@ -1,7 +1,11 @@
 const Transition = require('./pjax2-transition.js');
 
-const DefaultTransition = new Transition((element, TL)=>{
-  },(container, TL)=>{
-  });
+function outro(oldContainer, TL, anchorEl){
+  TL.to(oldContainer, 1, {autoAlpha: 0});
+}
 
-module.exports = DefaultTransition
+function intro(newContainer, TL){
+  TL.from(newContainer, 1, {autoAlpha: 1});
+}
+
+module.exports = new Transition(outro, intro);

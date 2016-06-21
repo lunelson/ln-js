@@ -732,6 +732,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"autoOpacity",
 			"el",
 			"doIntro",
 			"doOutro",
@@ -858,8 +859,7 @@
 			"this.Dom",
 			"this.History",
 			"initStateChange",
-			"linkClicked",
-			"evt"
+			"linkClicked"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -922,18 +922,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1207,7 +1200,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 229.0,
+	"side_bar_width": 339.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
