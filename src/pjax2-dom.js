@@ -68,10 +68,8 @@ const Dom = {
     return container;
   },
 
-  swapContainers(promisedArgs) {
-    const [newContainer, oldContainer] = promisedArgs;
-    console.log(newContainer);
-    console.log(oldContainer);
+  swapContainers(args) {
+    const [newContainer, oldContainer] = args;
     const wrapper = this.currWrapper();
     wrapper.removeChild(oldContainer);
     wrapper.appendChild(newContainer);

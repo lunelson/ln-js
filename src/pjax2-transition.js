@@ -68,7 +68,7 @@ class Transition extends Emitter {
   }
 
   makeTL(namespace) {
-    return new (window.TimelineMax||window.TimelineLight)({
+    return new (window.TimelineMax||window.TimelineLite)({
       paused: true,
       onStart: this.trigger,
       onStartParams: [`${namespace}Start`],

@@ -21,7 +21,7 @@ if (typeof fetch !== 'function') { window.fetch = require('whatwg-fetch'); }
 // Greensock
 // core: lite(), liteLite(), liteMax(), max()
 // opts: jquery(), plugins([list]), draggable()
-require('./gsap').max();
+require('./gsap').liteLite();
 
 // Other Deps
 const Ajax       = require('./ajax');
