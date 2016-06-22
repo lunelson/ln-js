@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"out",
+				"outroTL"
+			],
+			[
+				"prom",
+				"promisedArgs"
+			],
+			[
 				"lo",
 				"location"
 			],
@@ -173,19 +181,27 @@
 	"command_palette":
 	{
 		"height": 368.0,
-		"last_filter": "sort",
+		"last_filter": "move",
 		"selected_items":
 		[
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"figl",
+				"Figlet: Add Text"
+			],
 			[
 				"sort",
 				"Sort Lines"
 			],
 			[
 				"fi",
-				"Figlet: Add Text"
-			],
-			[
-				"figl",
 				"Figlet: Add Text"
 			],
 			[
@@ -197,20 +213,12 @@
 				"Set Syntax: JavaScript (Babel)"
 			],
 			[
-				"move",
-				"File: Move"
-			],
-			[
 				"rename",
 				"File: Rename"
 			],
 			[
 				"reve",
 				"File: Reveal"
-			],
-			[
-				"lower",
-				"Convert Case: Lower Case"
 			],
 			[
 				"sstext",
@@ -541,7 +549,7 @@
 				"Compare with..."
 			]
 		],
-		"width": 488.0
+		"width": 528.0
 	},
 	"console":
 	{
@@ -561,9 +569,17 @@
 	},
 	"file_history":
 	[
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-transition-default.js",
+		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/main.es",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-prefetch.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-utils.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-history.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax/history.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-view.js",
 		"/Users/lunelson/Git/packages/ln-js/src/emitter.js",
 		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/main.js",
-		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/main.es",
 		"/Users/lunelson/Git/packages/ln-js/src/pjax2-dispatcher.js",
 		"/Users/lunelson/Git/packages/ln-js/src/gsap.js",
 		"/Users/lunelson/Git/packages/ln-js/package.json",
@@ -680,15 +696,7 @@
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/_includes/data.jade",
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/index.jade",
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-prodns.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/proj-prodns.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/cust-serien.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-header.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-h1.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/root/root-social.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/root/root-page.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/root/root-page-hero.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/site/site-foot.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/site/site-menu.jade"
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/proj-prodns.jade"
 	],
 	"find":
 	{
@@ -744,6 +752,48 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"container",
+			"currContainer",
+			"constructed",
+			"Foo",
+			"promisedArgs",
+			"console",
+			"liteLite",
+			"Container",
+			"introContent.dataset",
+			"{};",
+			"into",
+			"newContainer",
+			"contentObj",
+			"this[`${namespace}Content`]",
+			"null",
+			"namespace",
+			"PrevLink",
+			".pause().seek(0);",
+			"1,",
+			"wrapper",
+			"passed",
+			"promised",
+			"promisedArgs",
+			": function",
+			"currWrapper()",
+			"outro",
+			"Params",
+			"Start",
+			"outroStart",
+			"outro",
+			"Start",
+			".on",
+			".emit",
+			"emit",
+			"container",
+			"currContainer",
+			"cleanLink",
+			"cleanHref",
+			"currUrl",
+			"currStatus",
+			"pjax2/cache",
+			"Util",
 			"container",
 			"this.newContainerLoad",
 			"newContainerLoad",
@@ -829,49 +879,7 @@
 			"getDoneTrans",
 			"resolve",
 			"xhrTimeout",
-			"forceGoTo",
-			"getTrans",
-			"transIN",
-			"transOUT",
-			"transB",
-			"transA",
-			"transNew",
-			"transOld",
-			"this.oldTL",
-			");",
-			"tl",
-			"javascript",
-			"In",
-			"Out",
-			"Containe",
-			"fade",
-			"consl",
-			"barba-",
-			"oldStartCompleted",
-			"newStartCompleted",
-			"onEnter",
-			"onLeave",
-			"Transition.init",
-			"Pjax.Cache",
-			"Pjax",
-			"this.onLinkEnter.bind(this)",
-			"loadedContainer",
-			"completion",
-			"loading",
-			"newContainerPromise",
-			"loading",
-			"loadPromise",
-			"_loadComplete",
-			"newContainerReady",
-			"this.deferred",
-			"transitionComplete",
-			"newContainerPromise",
-			"done",
-			"onStart",
-			"start",
-			"newContainerReady.promise",
-			"deferred",
-			"newContainerLoading"
+			"forceGoTo"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -879,6 +887,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			".trigger",
+			"lastStatus",
 			"currUrl",
 			"newContainerPromise",
 			"transitionRunning",
@@ -1219,7 +1229,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 339.0,
+	"side_bar_width": 171.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
