@@ -1,5 +1,6 @@
-var Utils = require('./Utils');
-var Cache = require('./Cache');
+var Ajax = require('./ajax');
+var Utils = require('./pjax2-utils');
+var Cache = require('./pjax2-cache');
 
 function onLinkEnter(event) {
   // get event target
@@ -11,11 +12,11 @@ function onLinkEnter(event) {
   // get the URL
   var url = el.href;
   // if link is valid...
-  if (Utils.validLink(el, event) && !Cache.get(url)) {
+  if (Utils.validLink(el, event)) {
     // get the content
-    var xhr = Utils.xhr(url);
-    // bung it in the cache
-    Cache.set(url, xhr);
+    Promise
+      .resolve(Cache.get(url)||Ajax.get(url))
+      .then((response)=>Cache.set(url, response));
   }
 }
 

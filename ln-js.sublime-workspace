@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"lo",
+				"location"
+			],
+			[
 				"last",
 				"lastClicked"
 			],
@@ -169,9 +173,29 @@
 	"command_palette":
 	{
 		"height": 368.0,
-		"last_filter": "move",
+		"last_filter": "sort",
 		"selected_items":
 		[
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"fi",
+				"Figlet: Add Text"
+			],
+			[
+				"figl",
+				"Figlet: Add Text"
+			],
+			[
+				"fig",
+				"Figlet: Add Text"
+			],
+			[
+				"ssjs",
+				"Set Syntax: JavaScript (Babel)"
+			],
 			[
 				"move",
 				"File: Move"
@@ -191,10 +215,6 @@
 			[
 				"sstext",
 				"Set Syntax: Plain Text"
-			],
-			[
-				"ssjs",
-				"Set Syntax: JavaScript (Babel)"
 			],
 			[
 				"lint mode",
@@ -231,10 +251,6 @@
 			[
 				"wrap",
 				"Word Wrap: Toggle"
-			],
-			[
-				"sort",
-				"Sort Lines"
 			],
 			[
 				"permi",
@@ -389,10 +405,6 @@
 				"Text Pastry: Range"
 			],
 			[
-				"figl",
-				"Figlet: Add Text"
-			],
-			[
 				"dbd",
 				"DocBlockr: Decorate line comment"
 			],
@@ -529,7 +541,7 @@
 				"Compare with..."
 			]
 		],
-		"width": 884.0
+		"width": 488.0
 	},
 	"console":
 	{
@@ -732,6 +744,27 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"container",
+			"this.newContainerLoad",
+			"newContainerLoad",
+			"currStatus",
+			"newUrl",
+			"anchorEl",
+			"html",
+			"defaultTransition",
+			"require",
+			"Dispatcher",
+			": ",
+			"Promise",
+			"fetch",
+			"xhr",
+			"on",
+			"off",
+			"handlerFn",
+			"eventName",
+			"handler",
+			"name",
+			"events",
 			"autoOpacity",
 			"el",
 			"doIntro",
@@ -838,28 +871,7 @@
 			"start",
 			"newContainerReady.promise",
 			"deferred",
-			"newContainerLoading",
-			"DefaultTransition",
-			"_this",
-			"transitionInProgress",
-			"greenLight",
-			": function",
-			"transitionCompleted",
-			"onNewContainerLoaded",
-			"this.forceGoTo",
-			"forceGoTo",
-			": function",
-			"forceGoTo",
-			"goTo",
-			"Pjax.goTo",
-			"this.getCurrentUrl",
-			"getCurrentUrl",
-			"bindEvents",
-			"    //",
-			"this.Dom",
-			"this.History",
-			"initStateChange",
-			"linkClicked"
+			"newContainerLoading"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -907,7 +919,7 @@
 	},
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -922,11 +934,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -947,7 +966,7 @@
 	"pinned_build_system": "Packages/User/SassQuatch.sublime-build",
 	"replace":
 	{
-		"height": 52.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -13,7 +13,7 @@ var History = module.exports = {
     });
   },
 
-  currStatus: function() {
+  lastStatus: function() {
     return this.history[this.history.length - 1];
   },
 

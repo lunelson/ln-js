@@ -1,24 +1,23 @@
-console.log('hello world');
-
-// gsap
-require('../../src/gsap').max();
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
 
-  var lastElementClicked;
+  // var lastElementClicked;
   var PrevLink = document.querySelector('a.prev');
   var NextLink = document.querySelector('a.next');
 
   window.Pjax = require('../../src/pjax2');
-  const Dispatcher = require('../../src/dispatcher');
-  const Transition = require('../../src/pjax2-transition');
+  window.Emitter = require('../../src/emitter');
+  // const Dispatcher = require('../../src/dispatcher');
+  // const Transition = require('../../src/pjax2-transition');
 
   Pjax.init();
   Pjax.Prefetch.init();
 
-  Dispatcher.on('linkClicked', function(el) { lastElementClicked = el; });
+  Pjax.currTrans.on('introStart', ()=>{
+    PrevLink.href = Pjax.currTrans.introData.prev;
+    NextLink.href = Pjax.currTrans.introData.next;
+  });
+
+  // Dispatcher.on('linkClicked', function(el) { lastElementClicked = el; });
 
   // // console.log(Pjax);
 
@@ -58,8 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // function movePages() {
   //   var _this = this;
   //   var goingForward = true;
-  //   PrevLink.href = this.newContainer.dataset.prev;
-  //   NextLink.href = this.newContainer.dataset.next;
 
   //   if (getNewPageFile() === this.oldContainer.dataset.prev) {
   //     goingForward = false;

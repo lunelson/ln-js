@@ -1,6 +1,12 @@
+//  _____                   _ _   _
+// |_   _|                 (_) | (_)
+//   | |_ __ __ _ _ __  ___ _| |_ _  ___  _ __
+//   | | '__/ _` | '_ \/ __| | __| |/ _ \| '_ \
+//   | | | | (_| | | | \__ \ | |_| | (_) | | | |
+//   \_/_|  \__,_|_| |_|___/_|\__|_|\___/|_| |_|
+
 const Emitter = require('./emitter.js');
 
-// TRANSITION
 class Transition extends Emitter {
 
   constructor(outroFn, introFn){
@@ -9,17 +15,13 @@ class Transition extends Emitter {
     this.outroFn = outroFn;
     this.introFn = introFn;
 
-    this.outroTL = new Timeline();
-    this.outroTL.onStart = () => this.emit('outroStart');
-    this.outroTL.onProgress = () => this.emit('outroProgress');
-    this.outroTL.onComplete = () => this.emit('outroComplete');
-    this.outroTL.onReverseComplete = () => this.emit('outroReverseComplete');
+    this.outroContent = null;
+    this.outroData = null;
+    this.introContent = null;
+    this.introData = null;
 
-    this.introTL = new Timeline();
-    this.introTL.onStart = () => this.emit('introStart');
-    this.introTL.onProgress = () => this.emit('introProgress');
-    this.introTL.onComplete = () => this.emit('introComplete');
-    this.introTL.onReverseComplete = () => this.emit('introReverseComplete');
+    this.outroTL = this.makeTL('outro');
+    this.introTL = this.makeTL('intro');
 
     this.outroRun = null;
     this.introRun = null;
@@ -27,20 +29,31 @@ class Transition extends Emitter {
 
   progress() { return this.outroTL.progress()||0 + this.introTL.progress()||0; }
 
-  runOutro(anchorEl){
+  // TODO: update anchorEl to a clickObj, with more information
+  runOutro(oldContainer, anchorEl){
+    this.outroContent = oldContainer;
+    this.outroData = oldContainer.dataset;
     this.outroRun = new Promise((resolve, reject) => {
-      this.on('outroComplete', () => resolve(anchorEl));
-      this.outroFn(anchorEl, this.outroTL, this.pjax);
+      this.one('outroComplete', () => {
+        this.outroTL.clear();
+        resolve(oldContainer);
+      });
+      this.outroFn(oldContainer, this.outroTL, anchorEl);
+      this.outroTL.play();
     });
     return this.outroRun;
   }
 
-  // runOutro(anchorEl){ return Promise.resolve(); }
-
-  runIntro(container, anchorEl){
+  runIntro(newContainer){
+    this.introContent = newContainer;
+    this.introData = newContainer.dataset;
     this.introRun = new Promise((resolve, reject) => {
-      this.on('introComplete', () => resolve(container));
-      this.introFn(container, this.introTL, this.pjax);
+      this.one('introComplete', () => {
+        this.introTL.clear();
+        resolve(newContainer);
+      });
+      this.introFn(newContainer, this.introTL);
+      this.introTL.play();
     });
     return this.introRun;
   }
@@ -49,8 +62,26 @@ class Transition extends Emitter {
     // ? cancel/kill existing promises?
     if (this.progress() <= 1) return this.outroRun;
     return new Promise((resolve, reject)=>{
-      this.on('introReverseComplete', () => resolve(anchorEl));
+      this.one('introReverseComplete', () => resolve(anchorEl));
       this.introTL.reverse();
+    });
+  }
+
+  makeTL(namespace) {
+    return new (window.TimelineMax||window.TimelineLight)({
+      paused: true,
+      onStart: this.trigger,
+      onStartParams: [`${namespace}Start`],
+      onStartScope: this,
+      onProgress: this.trigger,
+      onProgressParams: [`${namespace}Progress`],
+      onProgressScope: this,
+      onComplete: this.trigger,
+      onCompleteParams: [`${namespace}Complete`],
+      onCompleteScope: this,
+      onReverseComplete: this.trigger,
+      onReverseCompleteParams: [`${namespace}ReverseComplete`],
+      onReverseCompleteScope: this
     });
   }
 }

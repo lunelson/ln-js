@@ -21,7 +21,7 @@ var Utils = {
     return `${window.location.protocol}//${window.location.host}${window.location.pathname}${window.location.search}`;
   },
 
-  cleanLink(url) {
+  cleanHref(url) {
     return url.replace(/#.*/, '');
   },
 
@@ -40,7 +40,7 @@ var Utils = {
     /// ignore case when a hash is being tacked on the current url
     if (element.href.indexOf('#') > -1) return false;
     /// in case you're trying to load the same page
-    if (Utils.cleanLink(element.href) == Utils.cleanLink(location.href)) return false;
+    if (Utils.cleanHref(element.href) == Utils.cleanHref(location.href)) return false;
     if (element.classList.contains('no-barba')) return false;
     return true;
   },

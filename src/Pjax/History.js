@@ -17,7 +17,7 @@ var History = module.exports = {
     return this.history[this.history.length - 1];
   },
 
-  currStatus: function() {
+  lastStatus: function() {
     return this.history[this.history.length - 1];
   },
 

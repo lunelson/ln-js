@@ -1,26 +1,44 @@
-// EMITTER
+//  _____          _ _   _
+// |  ___|        (_) | | |
+// | |__ _ __ ___  _| |_| |_ ___ _ __
+// |  __| '_ ` _ \| | __| __/ _ \ '__|
+// | |__| | | | | | | |_| ||  __/ |
+// \____/_| |_| |_|_|\__|\__\___|_|
+
 class Emitter {
+
   constructor(){ this.events = {}; }
 
-  on(e, f) {
-    this.events[e] = this.events[e] || [];
-    this.events[e].push(f);
+  on(evt, fn) {
+    this.events[evt] = this.events[evt] || [];
+    this.events[evt].push(fn);
+    return this;
   }
 
-  off(e, f) {
-    if(e in this.events === false)
-      return;
-
-    this.events[e].splice(this.events[e].indexOf(f), 1);
+  one(evt, fn) {
+    fn._once = true;
+    this.on(evt, fn);
+    return this;
   }
 
-  trigger(e) {//e, ...args
-    if (e in this.events === false)
-      return;
+  off(evt, fn = false) {
+    fn ?
+      this.events[evt].splice(this.events[evt].indexOf(fn), 1):
+      delete this.events[evt];
+    return this;
+  }
 
-    for(var i = 0; i < this.events[e].length; i++){
-      this.events[e][i].apply(this, Array.prototype.slice.call(arguments, 1));
-    }
+  trigger(evt, ...args) {
+    // cache the this.events, to avoid consequences of mutation
+    const cache = this.events[evt] && this.events[evt].slice()
+    // only fire fns if they exist
+    cache && cache.forEach((fn) => {
+      // remove fns added with 'once'
+      fn._once && this.off(evt, fn)
+      // set 'this' context, pass args to fns
+      fn.apply(this, args)
+    })
+    return this;
   }
 }
 

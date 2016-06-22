@@ -1,5 +1,5 @@
-var Dispatcher = require('../Dispatcher');
-var Utils      = require('./Utils');
+var Dispatcher = require('./pjax2-dispatcher');
+var Utils      = require('./pjax2-utils');
 
 /// VIEW
 var View = module.exports = {

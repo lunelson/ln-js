@@ -28,8 +28,7 @@
   "dependencies": {
     "bluebird": "^3.4.1",
     "gsap": "^1.18.5",
-    "knot.js": "^1.1.1",
-    "native-promise-only": "^0.8.0-a"
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",

@@ -1,5 +1,13 @@
-/// DOM
-var Dom = module.exports = {
+// ______ _                  ______
+// | ___ (_)                 |  _  \
+// | |_/ /_  __ ___  ________| | | |___  _ __ ___
+// |  __/| |/ _` \ \/ /______| | | / _ \| '_ ` _ \
+// | |   | | (_| |>  <       | |/ / (_) | | | | | |
+// \_|   | |\__,_/_/\_\      |___/ \___/|_| |_| |_|
+//      _/ |
+//     |__/
+
+const Dom = {
 
   /// data NAMESPACE default
   dataNamespace: 'namespace',
@@ -16,7 +24,7 @@ var Dom = module.exports = {
   /// 1. place content in detached div
   /// 2. parse out <title> element text and set it
   /// 3. extract the newContainer element
-  parseNewContainer: function(responseText) {
+  parseNewContainer(responseText) {
     var newWrapper = document.createElement('div');
     newWrapper.innerHTML = responseText;
     var titleEl = newWrapper.querySelector('title');
@@ -26,11 +34,11 @@ var Dom = module.exports = {
   },
 
   /// get the wrapper
-  currWrapper: function() { return document.getElementById(this.wrapperId); },
+  currWrapper() { return document.getElementById(this.wrapperId); },
 
   /// get the container
   /// * accept a given wrapper, or use default wrapper
-  currContainer: function(wrapper) {
+  currContainer(wrapper) {
     if (!wrapper)
       wrapper = this.currWrapper();
     if (!wrapper)
@@ -44,7 +52,7 @@ var Dom = module.exports = {
   },
 
   /// get the namespace of the container
-  containerNamespace: function(container) {
+  containerNamespace(container) {
     if (container && container.dataset) {
       return container.dataset[this.dataNamespace];
     } else if (container) {
@@ -54,8 +62,22 @@ var Dom = module.exports = {
   },
 
   /// put the container in to the wrapper, with visibility 'hidden'
-  appendContainer: function(container) {
+  appendContainer(container) {
     container.style.visibility = 'hidden';
     this.currWrapper().appendChild(container);
+    return container;
+  },
+
+  swapContainers(promisedArgs) {
+    const [newContainer, oldContainer] = promisedArgs;
+    console.log(newContainer);
+    console.log(oldContainer);
+    const wrapper = this.currWrapper();
+    wrapper.removeChild(oldContainer);
+    wrapper.appendChild(newContainer);
+    return newContainer;
   }
+
 };
+
+module.exports = Dom;

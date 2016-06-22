@@ -46,12 +46,12 @@ function onLinkClick(event) {
 /// stateChange handler
 function onStateChange() {
 
-  console.log(History.currStatus());
+  console.log(History.lastStatus());
 
   // get new URL
   var newUrl = getCurrentUrl();
   // bail out, if current URL is same as new URL
-  if (History.currStatus().url === newUrl) return false;
+  if (History.lastStatus().url === newUrl) return false;
   // check if transition in progress
   if (Pjax.transitionInProgress) {
     /// if trans in prog, force go to new URL
@@ -60,7 +60,7 @@ function onStateChange() {
   }
   // otherwise...
   // fire internal events
-  Dispatcher.trigger('stateChange', History.currStatus(), History.prevStatus());
+  Dispatcher.trigger('stateChange', History.lastStatus(), History.prevStatus());
   // add URL to internal history manager
   History.add(newUrl);
   // get the promise for the new container
@@ -78,10 +78,10 @@ function onStateChange() {
 
 /// containerLoad handler
 function onContainerLoad(container) {
-  var currStatus = History.currStatus();
-  currStatus.namespace = Dom.getNamespace(container);
+  var lastStatus = History.lastStatus();
+  lastStatus.namespace = Dom.getNamespace(container);
   Dispatcher.trigger('containerLoad',
-    History.currStatus(),
+    History.lastStatus(),
     History.prevStatus(),
     container
   );
@@ -91,7 +91,7 @@ function onContainerLoad(container) {
 function onTransitionEnd() {
   Pjax.transitionInProgress = false;
   Dispatcher.trigger('transitionEnd',
-    History.currStatus(),
+    History.lastStatus(),
     History.prevStatus()
   );
 }
@@ -123,9 +123,9 @@ var Pjax = module.exports = {
     );
 
     // fire custom events for the current view.
-    Dispatcher.trigger('stateChange', History.currStatus());
-    Dispatcher.trigger('containerLoad', History.currStatus(), {}, container);
-    Dispatcher.trigger('transitionEnd', History.currStatus());
+    Dispatcher.trigger('stateChange', History.lastStatus());
+    Dispatcher.trigger('containerLoad', History.lastStatus(), {}, container);
+    Dispatcher.trigger('transitionEnd', History.lastStatus());
 
     // bind native events
     document.addEventListener('click', onLinkClick);
