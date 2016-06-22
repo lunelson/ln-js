@@ -9,6 +9,7 @@
 
 // Promise polyfills
 // full--https://github.com/petkaantonov/bluebird
+// full--https://github.com/tildeio/rsvp.js
 // min--https://github.com/stefanpenner/es6-promise
 // alt--https://github.com/taylorhakes/promise-polyfill
 // alt--https://github.com/getify/native-promise-only
