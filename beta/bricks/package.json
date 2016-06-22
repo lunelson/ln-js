@@ -1,0 +1,48 @@
+{
+  "name":        "bricks.js",
+  "version":     "1.3.0",
+  "description": "A blazing fast masonry layout generator for fixed width elements.",
+  "homepage":    "https://github.com/callmecavs/bricks.js",
+  "main":        "dist/bricks.min.js",
+  "jsnext:main": "src/bricks.js",
+
+  "author":  "Michael Cavalea",
+  "license": "MIT",
+
+  "scripts": {
+    "site": "git subtree push --prefix site/dist origin gh-pages"
+  },
+
+  "repository": {
+    "type": "git",
+    "url":  "https://github.com/callmecavs/bricks.js"
+  },
+  "bugs": {
+    "url": "https://github.com/callmecavs/bricks.js/issues"
+  },
+
+  "keywords": [
+    "grid",
+    "masonry",
+    "layout",
+    "packing"
+  ],
+
+  "dependencies": {
+    "knot.js": "^1.1.1"
+  },
+
+  "devDependencies": {
+    "babel-preset-es2015-rollup":                "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "browser-sync":                              "*",
+    "del":                                       "*",
+    "gulp":                                      "*",
+    "node-notifier":                             "*",
+    "rollup":                                    "*",
+    "rollup-plugin-babel":                       "*",
+    "rollup-plugin-commonjs":                    "*",
+    "rollup-plugin-node-resolve":                "*",
+    "rollup-plugin-uglify":                      "*"
+  }
+}
