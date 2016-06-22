@@ -4,6 +4,7 @@
 
 PJAX STUFF
 
+- how to check if already inited, to avoid second run?
 - check on popState, whether previous URL is at all from current site?
     (review History API best practices)
 - write functions with destructruing

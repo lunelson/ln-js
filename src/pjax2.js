@@ -37,7 +37,6 @@ const View       = require('./pjax2-view');
 
 const Pjax = Object.assign(Object.create(Emitter.prototype), {
 
-  // newContainerLoad: Promise.resolve(Dom.currContainer()),
   currContainer: null,
   currTrans: null,
   setCurrTrans(url) {
@@ -54,6 +53,10 @@ const Pjax = Object.assign(Object.create(Emitter.prototype), {
 
   // initialize
   init() {
+
+    // check if initialized, throw Error if so
+    if (this.initialized) throw new Error('Pjax is already initialized');
+    this.initialized = true;
 
     // get the container
     this.currContainer = Dom.currContainer();
@@ -135,15 +138,20 @@ function handleStateChange(element) {
       this.transitionRun = Promise
         .all([newContainerLoad, this.currTrans.recover()])
         // NB runIntro will receive container as first arg
-        .then(this.setCurrTrans(newUrl).runIntro.bind(this.currTrans));
+        .then(swapAndUpdate.bind(this)) // TODO: put swapAndUpdate here
+        .then(this.setCurrTrans(newUrl).runIntro.bind(this.currTrans))
+        .then(endTransition)
+        .catch(log);
   } else {
       // ...otherwise run outro and intro of current
       this.transitionRun = Promise
         // NB reset previous transition, and set this.currTrans to new one, based on current link
         .all([newContainerLoad, this.setCurrTrans(newUrl).runOutro(this.currContainer, element)])
         // receive [newContainer, oldContainer], remove/append, return newContainer
-        .then(Dom.swapContainers.bind(Dom))
-        .then(this.currTrans.runIntro.bind(this.currTrans));
+        .then(swapAndUpdate.bind(this)) // TODO: put swapAndUpdate here
+        .then(this.currTrans.runIntro.bind(this.currTrans))
+        .then(endTransition)
+        .catch(log);
   }
 
   // fire internal events -- isn't the info loged on this line out of date?
@@ -152,27 +160,32 @@ function handleStateChange(element) {
   // add URL to internal history manager
   HistMgr.add(newUrl);
 
-  // update statuses when container is loaded
-  newContainerLoad.then((container)=>{
-    var lastStatus = HistMgr.lastStatus();
-    lastStatus.namespace = Dom.containerNamespace(container);
-    Dispatcher.trigger('newContainerLoad',
-      HistMgr.lastStatus(),
-      HistMgr.prevStatus(),
-      container
-    );
-    this.currContainer = container;
-    return true;
-  }).catch(log);
-
-  // fire transition end update
-  this.transitionRun.then(()=>{
-    Dispatcher.trigger('transitionEnd',
-      HistMgr.lastStatus(),
-      HistMgr.prevStatus()
-    );
-    return true;
-  }).catch(log);
 }
+
+// update statuses when container is loaded
+function swapAndUpdate([newContainer, oldContainer]){
+  const lastStatus = HistMgr.lastStatus();
+  lastStatus.namespace = Dom.containerNamespace(newContainer);
+  Dispatcher.trigger('newContainerLoad',
+    HistMgr.lastStatus(),
+    HistMgr.prevStatus(),
+    newContainer
+  );
+  this.currContainer = newContainer;
+  const wrapper = Dom.currWrapper();
+  wrapper.removeChild(oldContainer);
+  wrapper.appendChild(newContainer);
+  return newContainer;
+}
+
+function endTransition(newContainer){
+  Dispatcher.trigger('transitionEnd',
+    HistMgr.lastStatus(),
+    HistMgr.prevStatus(),
+    newContainer
+  );
+  return true;
+}
+
 
 module.exports = Pjax;
