@@ -36,7 +36,7 @@ var Utils = {
     /// check if it's the same domain
     if (window.location.protocol !== element.protocol || window.location.hostname !== element.hostname) return false;
     /// check if the port is the same
-    if (Utils.getPort() !== Utils.getPort(element.port)) return false;
+    if (getPort() !== getPort(element.port)) return false;
     /// ignore case when a hash is being tacked on the current url
     if (element.href.indexOf('#') > -1) return false;
     /// in case you're trying to load the same page
@@ -44,20 +44,14 @@ var Utils = {
     if (element.classList.contains('no-barba')) return false;
     return true;
   },
-
-  getPort(p) {
-    var port = typeof p !== 'undefined' ? p : window.location.port;
-    var protocol = window.location.protocol;
-
-    if (port != '')
-      return parseInt(port);
-
-    if (protocol === 'http:')
-      return 80;
-
-    if (protocol === 'https:')
-      return 443;
-  }
 };
+
+function getPort(port) {
+  port = port || window.location.port;
+  var protocol = window.location.protocol;
+  if (port != '') return parseInt(port);
+  if (protocol === 'https:') return 443;
+  return 80;
+}
 
 module.exports = Utils;

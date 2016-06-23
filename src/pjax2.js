@@ -133,13 +133,15 @@ function handleStateChange(element) {
   const newContainerLoad = loadNewContainer(newUrl); // check
 
   // ...and deal with transition accordingly
+  const transition = this.currTrans;
+  trans.one('outroStart')
   if (this.currTrans.progress() > 0) {
       // if in progress, recover the current transition and run 'intro' of new one
       // this.transitionRun.cancel();
       this.transitionRun = Promise
         .all([newContainerLoad, this.currTrans.recover()])
         // NB runIntro will receive container as first arg
-        .then(swapAndUpdate.bind(this)) // TODO: put swapAndUpdate here
+        .then(containerSwap.bind(this)) // TODO: put containerSwap here
         .then(this.setCurrTrans(newUrl).runIntro.bind(this.currTrans))
         .then(endTransition)
         .catch(log);
@@ -149,7 +151,7 @@ function handleStateChange(element) {
         // NB reset previous transition, and set this.currTrans to new one, based on current link
         .all([newContainerLoad, this.setCurrTrans(newUrl).runOutro(this.currContainer, element)])
         // receive [newContainer, oldContainer], remove/append, return newContainer
-        .then(swapAndUpdate.bind(this)) // TODO: put swapAndUpdate here
+        .then(containerSwap.bind(this)) // TODO: put containerSwap here
         .then(this.currTrans.runIntro.bind(this.currTrans))
         .then(endTransition)
         .catch(log);
@@ -164,7 +166,7 @@ function handleStateChange(element) {
 }
 
 // update statuses when container is loaded
-function swapAndUpdate([newContainer, oldContainer]){
+function containerSwap([newContainer, oldContainer]){
   const lastStatus = HistMgr.lastStatus();
   lastStatus.namespace = Dom.containerNamespace(newContainer);
   Dispatcher.trigger('newContainerLoad',

@@ -181,9 +181,17 @@
 	"command_palette":
 	{
 		"height": 368.0,
-		"last_filter": "move",
+		"last_filter": "figl",
 		"selected_items":
 		[
+			[
+				"figl",
+				"Figlet: Add Text"
+			],
+			[
+				"fig",
+				"Figlet: Add Text"
+			],
 			[
 				"move",
 				"File: Move"
@@ -193,19 +201,11 @@
 				"Convert Case: Lower Case"
 			],
 			[
-				"figl",
-				"Figlet: Add Text"
-			],
-			[
 				"sort",
 				"Sort Lines"
 			],
 			[
 				"fi",
-				"Figlet: Add Text"
-			],
-			[
-				"fig",
 				"Figlet: Add Text"
 			],
 			[
@@ -549,7 +549,7 @@
 				"Compare with..."
 			]
 		],
-		"width": 528.0
+		"width": 821.0
 	},
 	"console":
 	{
@@ -752,6 +752,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"swapAndUpdate",
 			"container",
 			"currContainer",
 			"constructed",
@@ -878,8 +879,7 @@
 			"getOldOut",
 			"getDoneTrans",
 			"resolve",
-			"xhrTimeout",
-			"forceGoTo"
+			"xhrTimeout"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1229,7 +1229,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 171.0,
+	"side_bar_width": 323.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
