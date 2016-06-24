@@ -1,23 +1,32 @@
+// TODO: read up about es6 mixins
+
+window.addEventListener('click')
+window.addEventListener('popstate')
+
+Pjax.Cache = new Cache();
+    // ...a cache of Promises i.e. (Cache.get(url)||Cache.set(url, Ajax.get(url))).then
+    data: Object
+    active: Boolean // add this
+    --
+    {Prefetch}
+        active: Boolean
+        listeners
+        --
+        init
+            - addEventListeners:
+        linkTest(link)
+            - validate link for prefetc
+        setLinkTest(fn)
+            - this.linkTest
+        isValid(link)
+            - return Pjax.linkTest(link) && this.linkTest(link)
+
 ClassObj
     class: class {}
     mixin: function {}
 
-Media // extend Emitter
-    on
-    one
-    off
-    trigger
-    ---
-    getCSS
-    onChange
-    onBelow
-    onAbove
-    breakPoints
 
 Cache
-    data: Object
-    active: Boolean // add this
-    ---
     get // if !this.active, return null
     set // if !this.active, noop()
     reset // if !this.active, noop()
@@ -31,24 +40,15 @@ Gsap // add require check
     draggable
     plugins([...])
 
-Ajax
+Ajax // use / polyfill the Fetch API
     get
     getJSON
 
 Emitter
     on
     one
-    off
+    off // what happens if you try to off() soemthing that's not listening
     trigger
-
-Dispatcher // extends Emitter
-
-HistMgr
-    history
-    ---
-    push
-    lastStatus
-    prevStatus
 
 Utils
     getHTML
@@ -91,50 +91,72 @@ Dom
         - set this.currContainer
 
 Pjax // extend Emitter
-    (events)
+    <!-- global listeners -->
     click
+    popState
+    <!-- internal events, listeners -->
     domUpdate
     stateChange
-    ---
-    wrapper
-    spinner
-    currContainer
-    currTransition
-    updateTransition(clickObj) -> set and return currTransition, according to clickObj
-    currWrapper // remove
-    cacheEnabled // remove
-    lastClicked // remove
-    ---
-    (init)
+    <!-- properties -->
+    wrapperEl: Node
+    spinnerEl: Node
+    currContainerEl: Node
+    currSpinnerTrans: Object
+    currContainerTrans: Object
+    <!-- methods -->
+    setSpinnerTrans(clickObj) // can be reset
+        - set and return spinnerTransition
+    setContainerTrans(clickObj) // can be reset
+        - set and return containerTransition
+    testLink(link)
+        - validate link for pjax
+    loadNewDocument(url)
+    updateCurrDocument([newDocumentHTML, oldContainerEl])
+    init
         - Dom.parseWrapper()
         - Dom.parseContainer(this.wrapper)
-    activeTransition // remove
+    <!-- Handlers: global -->
+    click(event)
+        - validate link; if valid
+            - compare url to window.location.href; if different
+                - stop propagation etc.
+                - trigger this.stateChange, clickObj, Clicks.curr()
+    popState(event)
+        - clickObj = Clicks.find(window.state.stamp)
+        - trigger this.stateChange, clickObj, Clicks.curr()
+    <!-- Handlers: internal -->
+    pjaxStateChange(clickObj)
+        - var newDocumentLoad = loadNewDocument(clickObj)
+        - if currContainerTransition.progress == 0 // has been reset, or never run
+            this.currContainerTrans = this.setCurrTrans(clickObj.url)
+            var outgoingTransition = this.currContainerTrans.doOutgoing(); // nb executed
+            Promise.all(newDocumentLoad, outgoingTransition)
+            .then(udpateCurrDocument) // receive [newDocumentHTML, oldContainerEl]
+                - set document.title
+                - history.pushState(clickObj, title, clickObj.url)
+                - Clicks.push(clickObj)
+                    - if Clicks.find(ClickObj.stamp) Clicks.trim(index)
+            .then(this.currContainerTrans.doIncoming)
+        - else
+            var outgoingTransition = this.currContainerTrans.recover();
+            var transIncoming = this.currContainerTrans.intro
+transOut
+transIn
+recover
+
 
 
     setCurrTrans // remove
-    loadNewContainer // rename: getNewContainer
+    loadNewContainer // rename: loadNewDocument
         - this.getContent -> response
         - Dom.processResponse -> container
         -
 
     handleClick(event)
-    handleStateChange(clickObj)
-    handleDomUpdate(title, container)
+    handlePopState(event)
+    --
+    handlePjaxStateChange(clickObj)
+    handlePjaxDomUpdate(title, container)
     swapAndUpdate // rename: updateDom([newContainer, oldContainer])
     endTransition
-
-
-window.click -> triggerClick
-    - parse element out of event
-    - if valid element.href and not equal to Hist.curr.url
-        - Hist.add(clickObj)//
-        - window.history.pushState
-        - this.trigger('stateChange', Hist.curr(), Hist.prev())//
-        - this.trigger('stateChange', clickObj, Hist.curr())
-
-window.popstate -> triggerPopState
-    - this.trigger('stateChange', Hist.prev(), Hist.curr())
-    - Hist.add(Hist.prev());
-
-
 

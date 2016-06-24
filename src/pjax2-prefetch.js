@@ -1,29 +1,31 @@
-var Ajax = require('./ajax');
-var Utils = require('./pjax2-utils');
-var Cache = require('./pjax2-cache');
+// ______          __     _       _
+// | ___ \        / _|   | |     | |
+// | |_/ / __ ___| |_ ___| |_ ___| |__
+// |  __/ '__/ _ \  _/ _ \ __/ __| '_ \
+// | |  | | |  __/ ||  __/ || (__| | | |
+// \_|  |_|  \___|_| \___|\__\___|_| |_|
 
-function onLinkEnter(event) {
-  // get event target
-  var el = event.target;
-  // traverse up until valid href
-  while (el && !el.href) { el = el.parentNode; }
-  // if nothing found, bail
-  if (!el) { return; }
-  // get the URL
-  var url = el.href;
-  // if link is valid...
-  if (Utils.validLink(el, event)) {
-    // get the content
-    Promise
-      .resolve(Cache.get(url)||Ajax.get(url))
-      .then((response)=>Cache.set(url, response));
+// NB this is separate from native prefetch/-load/-browse techniques
+// https://css-tricks.com/prefetching-preloading-prebrowsing/
+
+const Ajax = require('./ajax');
+const Cache = require('./pjax2-cache');
+
+function handleEnter(event) {
+  if (!this.active) return;
+  var target = event.target;
+  if (target.dataset[this.dataAttr]!=undefined && target.href) {
+    var url = target.href;
+    Cache.set(url, Ajax.get(url));
   }
 }
 
-/// PREFETCH
-var Prefetch = module.exports = {
-  init: function() {
-    document.body.addEventListener('mouseover', onLinkEnter);
-    document.body.addEventListener('touchstart', onLinkEnter);
+// TODO: add get/set methods for dataAttr, to strip the 'data-' part, if given
+const Prefetch = module.exports = {
+  dataAttr: 'prefetch',
+  setDataAttr(str) { this.dataAttr = str; },
+  init() {
+    document.body.addEventListener('mouseover', handleEnter.bind(this));
+    document.body.addEventListener('touchstart', handleEnter.bind(this));
   }
 };
