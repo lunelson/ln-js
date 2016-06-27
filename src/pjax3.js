@@ -43,7 +43,7 @@ const Pjax = {
     }).then(([currDoc, prevDoc]) => {
       // do any final cleanups here
       return currDoc;
-    });
+    }); // still a Promise here, which resolves currDoc
   }
 };
 

@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"currTrans",
+				"currTransition"
+			],
+			[
+				"load",
+				"docLoadPromise"
+			],
+			[
+				"click",
+				"clickObj"
+			],
+			[
+				"constr",
+				"constructor"
+			],
+			[
+				"old",
+				"oldContainerEl"
+			],
+			[
 				"out",
 				"outroTL"
 			],
@@ -181,9 +201,17 @@
 	"command_palette":
 	{
 		"height": 368.0,
-		"last_filter": "figl",
+		"last_filter": "ssjs",
 		"selected_items":
 		[
+			[
+				"ssjs",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
 			[
 				"figl",
 				"Figlet: Add Text"
@@ -197,20 +225,12 @@
 				"File: Move"
 			],
 			[
-				"lower",
-				"Convert Case: Lower Case"
-			],
-			[
 				"sort",
 				"Sort Lines"
 			],
 			[
 				"fi",
 				"Figlet: Add Text"
-			],
-			[
-				"ssjs",
-				"Set Syntax: JavaScript (Babel)"
 			],
 			[
 				"rename",
@@ -549,7 +569,7 @@
 				"Compare with..."
 			]
 		],
-		"width": 821.0
+		"width": 515.0
 	},
 	"console":
 	{
@@ -569,11 +589,15 @@
 	},
 	"file_history":
 	[
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-clicks.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-handlers.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2-prefetch.js",
+		"/Users/lunelson/Git/packages/ln-js/src/pjax2.js",
+		"/Users/lunelson/Git/packages/ln-js/REVIEW.md",
+		"/Users/lunelson/Git/packages/ln-js/NEW.js",
 		"/Users/lunelson/Git/packages/ln-js/src/pjax2-transition-default.js",
 		"/Users/lunelson/Git/packages/ln-js/test/nextprev2/main.es",
-		"/Users/lunelson/Git/packages/ln-js/src/pjax2-prefetch.js",
 		"/Users/lunelson/Git/packages/ln-js/src/pjax2-utils.js",
-		"/Users/lunelson/Git/packages/ln-js/src/pjax2.js",
 		"/Users/lunelson/Git/packages/ln-js/src/pjax2-history.js",
 		"/Users/lunelson/Git/packages/ln-js/src/pjax.js",
 		"/Users/lunelson/Git/packages/ln-js/src/pjax/history.js",
@@ -692,11 +716,7 @@
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/cust-menschen.jade",
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/assets/stylesheets/module/_page-menschen.scss",
 		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/service/presse/post/index.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/service/kontakt/index.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_includes/data.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/mini/index.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/page/page-prodns.jade",
-		"/Users/lunelson/Git/projects/state-rchb-proto/public/_module/cust/proj-prodns.jade"
+		"/Users/lunelson/Git/projects/state-rchb-proto/public/view/service/kontakt/index.jade"
 	],
 	"find":
 	{
@@ -752,6 +772,49 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"new",
+			"old",
+			"Root",
+			"Nav",
+			"State",
+			"newBoundTimeline",
+			"potentiall",
+			"fn",
+			"tl",
+			"Timeline",
+			"TL",
+			"1,",
+			"'],",
+			"`",
+			"namespace",
+			"${namespace}",
+			"clickedEl",
+			"action",
+			"currDoc",
+			"currTrans",
+			"nextDoc",
+			"prevAction",
+			"navObj",
+			"navAction",
+			"prevNavObj",
+			"navObj",
+			"currContent",
+			"currTransition",
+			"nextDocument",
+			"Tween",
+			"currIndex",
+			"value",
+			"uids",
+			"doOutro",
+			"oldContainerTrans",
+			"updateDocument",
+			"swapOldNewContainers",
+			"getNewContainer",
+			"newContainerLoad",
+			"fn(clickObj)",
+			"var",
+			"onLinkEnter",
+			"el",
 			"swapAndUpdate",
 			"container",
 			"currContainer",
@@ -836,50 +899,7 @@
 			"wrapper",
 			"getNamespace",
 			"getContainer",
-			"parseResponse",
-			"putContainer",
-			"wrapper",
-			"pjax-gs",
-			"getWrapper",
-			"Barba",
-			"History",
-			"new Promise()",
-			"var",
-			"window",
-			"return this.assign();",
-			"gsap.",
-			"/2",
-			"element",
-			"return",
-			"outro",
-			"TL",
-			"Start",
-			"global.",
-			"this",
-			"arr",
-			"ctrl",
-			"move",
-			"right",
-			"getCurrentUrl",
-			"last",
-			"prevStatus",
-			"currentStatus",
-			"setTrans",
-			"element",
-			"clickedEl",
-			"newContainer",
-			"go",
-			"currAction",
-			"do",
-			"forceGoTo",
-			"transOutFn",
-			"goTo",
-			"onStateChange",
-			"getNewIn",
-			"getOldOut",
-			"getDoneTrans",
-			"resolve",
-			"xhrTimeout"
+			"parseResponse"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1229,7 +1249,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 323.0,
+	"side_bar_width": 273.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

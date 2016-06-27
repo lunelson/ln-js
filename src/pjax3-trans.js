@@ -12,26 +12,29 @@ class Transition extends Emitter {
   constructor(fn){
     super();
     this.fn = fn;
-    this.tl = newBoundTimeline.call(this);
-
+    this.TL = newTriggerTL.call(this);
   }
 
   render(newAction, newDoc, currDoc) {
-    this.newDoc = newDoc;
-    this.currDoc = currDoc;
+    this.newDoc = newDoc; // potentially unnecessary
+    this.currDoc = currDoc; // potentially unnecessary
     return new Promise((resolve) => {
-      this.one('complete', (arr) => { this.tl.clear(); resolve(arr)});
-      this.fn(tl, clickTarget, newDoc, currDoc);
-      this.tl.play();
+      this.one('complete', (arr) => { this.TL.clear(); resolve(arr); });
+      // this.one('complete', () => { this.TL.clear(); resolve([newDoc, currDoc])}); // alternate
+      this.fn(TL, newAction, newDoc, currDoc);
+      // this.fn(newAction, newDoc, currDoc); // alternative: reference this.TL in function
+      this.TL.play();
     });
   }
 }
 
-function newBoundTimeline() {
+module.exports = Transition;
+
+function newTriggerTL() {
   return new (window.TimelineMax||window.TimelineLite)({
     paused: true,
     onStart: this.trigger,
-    onStartParams: ['start', this.newDoc, this.currDoc],
+    onStartParams: ['start', this.newDoc, this.currDoc], // TODO: verify, these args are passed
     onStartScope: this,
     onProgress: this.trigger,
     onProgressParams: ['progress', this.newDoc, this.currDoc],
@@ -39,10 +42,8 @@ function newBoundTimeline() {
     onComplete: this.trigger,
     onCompleteParams: ['complete', this.newDoc, this.currDoc],
     onCompleteScope: this,
-    // onReverseComplete: this.trigger,
-    // onReverseCompleteParams: ['reverseComplete', this.newDoc, this.currDoc],
-    // onReverseCompleteScope: this
+    onReverseComplete: this.trigger,
+    onReverseCompleteParams: ['reverseComplete', this.newDoc, this.currDoc],
+    onReverseCompleteScope: this
   });
 }
-
-module.exports = Transition;
