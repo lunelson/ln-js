@@ -14,7 +14,7 @@ const Ajax = require('./ajax');
 
 const Pjax = {
 
-  contentId: 'pjax-root',
+  contentRootId: 'pjax-root',
   prefetchAttr: 'prefetch',
   prefetchActive: true,
   Transition: require('./pjax3-trans'),
@@ -24,7 +24,7 @@ const Pjax = {
     if (this.initialized) throw new Error('Pjax.init: attempted to initialize twice');
     this.initialized = true;
 
-    let contentRoot = document.getElementById(this.contentId);
+    let contentRoot = document.getElementById(this.contentRootId);
     if (!contentRoot) throw new Error('Pjax.init: no content element found')
 
     this.contentChain = Promise.resolve(contentRoot);
@@ -34,14 +34,16 @@ const Pjax = {
     this.prefetchActive = prefetch;
     this.selectTransition = () => { return require('./pjax3-trans-default'); };
 
-    // TODO: push the first state and replaceState with timestamped version
-    // this.navStates.push({})
-    // window.history.replaceState(Date.now())
+    let stamp = Date.now(), url = cleanHref(window.location.href);
+    window.history.replaceState(stamp, null, url);
+    this.navStates.push(url, {url, stamp});
 
-    document.body.addEventListener('mouseover', handlePointer.bind(this));
-    document.body.addEventListener('touchstart', handlePointer.bind(this));
     document.body.addEventListener('click', handleClick.bind(this));
     window.addEventListener('popstate', handlePopState.bind(this));
+    if (prefetch) {
+      document.body.addEventListener('mouseover', handlePointer.bind(this));
+      document.body.addEventListener('touchstart', handlePointer.bind(this));
+    }
 
     return this;
   },
@@ -146,7 +148,7 @@ function loadContent(state) {
       if (titleNode) document.title = titleNode.textContent;
       // TODO: verify that this is how pushState works, wrt document.title
       if (state.event.type === 'click') window.history.pushState(state.stamp, document.title, state.url);
-      let content = tempNode.querySelector(`#${this.contentId}`);
+      let content = tempNode.querySelector(`#${this.contentRootId}`);
       if (!content) throw new Error('Pjax.loadContent: no content element found')
       return content;
     }).catch(log);
