@@ -14,37 +14,47 @@ const Ajax = require('./ajax');
 
 const Pjax = {
 
-  init() {
+  contentId: 'pjax-root',
+  prefetchAttr: 'prefetch',
+  prefetchActive: true,
+  Transition: require('./pjax3-trans'),
 
-    if (this.initialized) throw new Error('Pjax: attempted to initialize twice');
+  init(prefetch=true) {
 
+    if (this.initialized) throw new Error('Pjax.init: attempted to initialize twice');
+    this.initialized = true;
+
+    let contentRoot = document.getElementById(this.contentId);
+    if (!contentRoot) throw new Error('Pjax.init: no content element found')
+
+    this.contentChain = Promise.resolve(contentRoot);
+    this.navStates = new Stack();
     this.cache = new Cache();
-    this.rootEl = document.getElementById('pjax') || document.body,
 
-    this.navState = new Stack();
-    this.docState = Promise.resolve(this.rootEl),
-    this.getTransition = function(newAction, currAction){ return require('./pjax2-transition-default'); },
+    this.prefetchActive = prefetch;
+    this.selectTransition = () => { return require('./pjax3-trans-default'); };
 
-    // listeners
+    // TODO: push the first state and replaceState with timestamped version
+    // this.navStates.push({})
+    // window.history.replaceState(Date.now())
+
     document.body.addEventListener('mouseover', handlePointer.bind(this));
     document.body.addEventListener('touchstart', handlePointer.bind(this));
     document.body.addEventListener('click', handleClick.bind(this));
     window.addEventListener('popstate', handlePopState.bind(this));
 
-    this.initialized = true;
     return this;
   },
 
-  navigate(newAction, currAction) {
-
-    let newDoc = loadNewDoc.call(this, newAction);
-    this.docState = this.docState.then((currDoc) => {
-      return this.getTransition(newAction, currAction).render(newAction, newDoc, currDoc);
-    }).then(([currDoc, prevDoc]) => {
-      // do any final cleanups here
-      return currDoc;
-    }); // still a Promise here, which resolves currDoc
+  navigate(newState, oldState) {
+    let newContentLoad = loadContent.call(this, newState);
+    this.contentChain = this.contentChain.then((oldContent) => {
+      return this
+        .selectTransition(newState, oldState)
+        .render(newContentLoad, oldContent, newState, oldState);
+    }); // newContentLoad is returned
   }
+
 };
 
 module.exports = Pjax;
@@ -53,45 +63,93 @@ module.exports = Pjax;
 // HANDLERS //
 //////////////
 
+// ✅
 function handlePointer(event) {
-  // if link and prefetch-link and pjax-link and prefetch=true
-  if (Utils.validPrefetch(element)) this.cache.set(element.href, Ajax.get(element.href));
+  if (!window.history.pushState) return false;
 
+  if (isPrefetchElement.call(this, event.target) && this.prefetchActive)
+    this.cache.set(element.href, Ajax.get(element.href));
 }
 
+// ✅
 function handleClick(event) {
-  // resolve the element
+  if (!window.history.pushState) return false;
+
   let element = event.target;
   while (element && !element.href) element = element.parentNode;
-  // validate; TODO: change this function -- only proceed if href valid, and href != window.location.href
-  if (Utils.validLink(element, event)) {
-    // stop native event
+
+  if (isPjaxEvent(event) && isPjaxElement(element)) {
+
     event.stopPropagation();
     event.preventDefault();
-    let newAction = { url: element.href, stamp: Date.now() };
-    let currAction = this.navState.curr();
-    this.navState.push(newAction.stamp, newAction);
-    newAction.click = element;
-    this.navigate(newAction, currAction);
+
+    let oldState = this.navStates.curr();
+    let newState = { url: cleanHref(element.href), stamp: Date.now() };
+    this.navStates.push(newState.stamp, newState);
+    newState.event = event;
+    newState.target = element;
+    this.navigate(newState, oldState);
   }
 }
 
+// ✅
 function handlePopState(event) {
-  // currAction = State.curr()
-  // newAction = State.seek(window.history.state)
-  // newAction.popstate = (newAction.stamp < currAction.stamp) ? 'back' : 'forward'
-  // this.navigate(newAction, currAction)
+  console.log(window.history.state);
+  if (!window.history.pushState) return false;
+  let oldState = this.navStates.curr()
+  let newState = this.navStates.seek(window.history.state)
+  newState.event = event;
+  // TODO: can you determine fwd or rev from examining the event?
+  newState.direction = (newState.stamp < oldState.stamp) ? 'back' : 'forward';
+  this.navigate(newState, oldState);
 }
 
-
-function loadNewDoc(newAction) {
-  let url = newAction.url;
-  let newDoc = (this.cache.get(url)||this.cache.set(url, Ajax.get(url))).then((html)=>{
-    // parse out and set document title
-    // if newAction is a push, push the state
-    if (newAction.click) window.history.pushState(newAction.stamp, title, element.href);
-
-    return html;
-  }).catch(log);
-  return newDoc;
+// ✅
+function isPjaxEvent(event) {
+  if (event.which > 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+  return true;
 }
+
+// ✅
+function isPjaxElement(element) {
+  if (!element || !element.href) return false;
+  if (element.target && element.target === '_blank') return false;
+  if (window.location.protocol !== element.protocol || window.location.hostname !== element.hostname) return false;
+  if (parsePort(window.location.port) !== parsePort(element.port)) return false;
+  if (cleanHref(window.location.href) === cleanHref(element.href)) return false;
+  if (element.href.indexOf('#') > -1) return false;
+  if (element.classList.contains('no-pjax')) return false;
+  return true;
+}
+
+// ✅
+function isPrefetchElement(element) { return (element.dataset[this.prefetchDataAttr]!=undefined && element.href); }
+
+// ✅
+function cleanHref(url) { return url.replace(/#.*/, ''); }
+
+// ✅
+function parsePort(port) {
+  port = port || window.location.port;
+  var protocol = window.location.protocol;
+  if (port != '') return parseInt(port);
+  if (protocol === 'https:') return 443;
+  return 80;
+}
+
+// ✅
+function loadContent(state) {
+  return (this.cache.get(state.url)||this.cache.set(state.url, Ajax.get(state.url)))
+    .then((html) => {
+      let tempNode = document.createElement('div'); tempNode.innerHTML = html;
+      let titleNode = tempNode.querySelector('title');
+      if (titleNode) document.title = titleNode.textContent;
+      // TODO: verify that this is how pushState works, wrt document.title
+      if (state.event.type === 'click') window.history.pushState(state.stamp, document.title, state.url);
+      let content = tempNode.querySelector(`#${this.contentId}`);
+      if (!content) throw new Error('Pjax.loadContent: no content element found')
+      return content;
+    }).catch(log);
+}
+
+const log = console.log.bind(console);

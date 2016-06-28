@@ -6,23 +6,25 @@
 //   \_/_|  \__,_|_| |_|___/_|\__|_|\___/|_| |_|
 
 const Emitter = require('./emitter.js');
+const Gsap = require('./gsap').max();
 
 class Transition extends Emitter {
 
   constructor(fn){
     super();
     this.fn = fn;
-    this.TL = newTriggerTL.call(this);
+    this.TL = newBoundTimeline.call(this);
   }
 
-  render(newAction, newDoc, currDoc) {
-    this.newDoc = newDoc; // potentially unnecessary
-    this.currDoc = currDoc; // potentially unnecessary
+  render(newContentLoad, oldContent, newState, oldState) {
+    // this.newContentLoad = newContentLoad; // potentially unnecessary
+    // this.oldContent = oldContent; // potentially unnecessary
     return new Promise((resolve) => {
-      this.one('complete', (arr) => { this.TL.clear(); resolve(arr); });
-      // this.one('complete', () => { this.TL.clear(); resolve([newDoc, currDoc])}); // alternate
-      this.fn(TL, newAction, newDoc, currDoc);
-      // this.fn(newAction, newDoc, currDoc); // alternative: reference this.TL in function
+      // this.one('complete', (arr) => { this.TL.clear(); resolve(arr); });
+      // this.one('complete', () => { this.TL.clear(); resolve([newContentLoad, oldContent])}); // alternate
+      this.one('complete', () => { this.TL.clear(); resolve(newContentLoad)}); // alternate
+      // this.fn(this.TL, newState, newContentLoad, oldContent);
+      this.fn.call(this, newContentLoad, oldContent, newState, oldState); // alternative: reference this.TL in function
       this.TL.play();
     });
   }
@@ -30,20 +32,20 @@ class Transition extends Emitter {
 
 module.exports = Transition;
 
-function newTriggerTL() {
+function newBoundTimeline() {
   return new (window.TimelineMax||window.TimelineLite)({
     paused: true,
     onStart: this.trigger,
-    onStartParams: ['start', this.newDoc, this.currDoc], // TODO: verify, these args are passed
+    onStartParams: ['start', this.newContentLoad, this.oldContent], // TODO: verify, these args are passed
     onStartScope: this,
     onProgress: this.trigger,
-    onProgressParams: ['progress', this.newDoc, this.currDoc],
+    onProgressParams: ['progress', this.newContentLoad, this.oldContent],
     onProgressScope: this,
     onComplete: this.trigger,
-    onCompleteParams: ['complete', this.newDoc, this.currDoc],
+    onCompleteParams: ['complete', this.newContentLoad, this.oldContent],
     onCompleteScope: this,
     onReverseComplete: this.trigger,
-    onReverseCompleteParams: ['reverseComplete', this.newDoc, this.currDoc],
+    onReverseCompleteParams: ['reverseComplete', this.newContentLoad, this.oldContent],
     onReverseCompleteScope: this
   });
 }

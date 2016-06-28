@@ -5,6 +5,8 @@
 // | |\  | (_| |\ V //\__/ / || (_| | (__|   <
 // \_| \_/\__,_| \_/ \____/ \__\__,_|\___|_|\_\
 
+// TODO: change the name of this to StateStack
+
 class NavStack {
 
   constructor() {

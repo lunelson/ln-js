@@ -1,36 +1,3 @@
-// TODO: read up about es6 mixins
-
-window.addEventListener('click')
-window.addEventListener('popstate')
-
-Pjax.Cache = new Cache();
-    // ...a cache of Promises i.e. (Cache.get(url)||Cache.set(url, Ajax.get(url))).then
-    data: Object
-    active: Boolean // add this
-    --
-    {Prefetch}
-        active: Boolean
-        listeners
-        --
-        init
-            - addEventListeners:
-        linkTest(link)
-            - validate link for prefetc
-        setLinkTest(fn)
-            - this.linkTest
-        isValid(link)
-            - return Pjax.linkTest(link) && this.linkTest(link)
-
-ClassObj
-    class: class {}
-    mixin: function {}
-
-
-Cache
-    get // if !this.active, return null
-    set // if !this.active, noop()
-    reset // if !this.active, noop()
-
 Gsap // add require check
     max
     lite
@@ -39,6 +6,11 @@ Gsap // add require check
     jquery
     draggable
     plugins([...])
+
+// TODO: read up about es6 mixins
+ClassObj
+    class: class {}
+    mixin: function {}
 
 Ajax // use / polyfill the Fetch API
     get
@@ -49,6 +21,21 @@ Emitter
     one
     off // what happens if you try to off() soemthing that's not listening
     trigger
+
+//====================================
+
+Prefetch
+    active: Boolean
+    listeners
+    --
+    init
+        - addEventListeners:
+    linkTest(link)
+        - validate link for prefetc
+    setLinkTest(fn)
+        - this.linkTest
+    isValid(link)
+        - return Pjax.linkTest(link) && this.linkTest(link)
 
 Utils
     getHTML
