@@ -1,1 +1,1 @@
-console.error("Error: Cannot find module '../../src/pjax' from '/Users/lunelson/Git/packages/ln-js/test/nextprev'");
+console.error("Error: Cannot find module '../../src/dispatcher' from '/Users/lunelson/Git/packages/ln-js/test/nextprev'");

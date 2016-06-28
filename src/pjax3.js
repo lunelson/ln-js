@@ -35,8 +35,8 @@ const Pjax = {
     this.selectTransition = () => { return require('./pjax3-trans-default'); };
 
     let stamp = Date.now(), url = cleanHref(window.location.href);
-    window.history.replaceState(stamp, null, url);
     this.navStates.push(stamp, {url, stamp});
+    window.history.replaceState({url, stamp}, null, url);
 
     document.body.addEventListener('click', handleClick.bind(this));
     window.addEventListener('popstate', handlePopState.bind(this));
@@ -75,7 +75,7 @@ function handlePointer(event) {
 
 // ✅
 function handleClick(event) {
-  if (!window.history.pushState) return false;
+  if (!window.history.pushState || !event.target) return false;
 
   let element = event.target;
   while (element && !element.href) element = element.parentNode;
@@ -96,10 +96,10 @@ function handleClick(event) {
 
 // ✅
 function handlePopState(event) {
-  console.log(window.history.state);
-  if (!window.history.pushState) return false;
-  let oldState = this.navStates.curr()
-  let newState = this.navStates.seek(window.history.state)
+  if (!window.history.pushState || !event.state) return false;
+  console.log(event);
+  let oldState = this.navStates.curr();
+  let newState = this.navStates.seek(event.state.stamp) || { stamp: event.state.stamp, url: event.state.url };
   newState.event = event;
   // TODO: can you determine fwd or rev from examining the event?
   newState.direction = (newState.stamp < oldState.stamp) ? 'back' : 'forward';
@@ -147,7 +147,7 @@ function loadContent(state) {
       let titleNode = tempNode.querySelector('title');
       if (titleNode) document.title = titleNode.textContent;
       // TODO: verify that this is how pushState works, wrt document.title
-      if (state.event.type === 'click') window.history.pushState(state.stamp, document.title, state.url);
+      if (state.event.type === 'click') window.history.pushState({url: state.url, stamp: state.stamp}, null, state.url);
       let content = tempNode.querySelector(`#${this.contentRootId}`);
       if (!content) throw new Error('Pjax.loadContent: no content element found')
       return content;
