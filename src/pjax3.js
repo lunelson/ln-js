@@ -36,7 +36,7 @@ const Pjax = {
 
     let stamp = Date.now(), url = cleanHref(window.location.href);
     window.history.replaceState(stamp, null, url);
-    this.navStates.push(url, {url, stamp});
+    this.navStates.push(stamp, {url, stamp});
 
     document.body.addEventListener('click', handleClick.bind(this));
     window.addEventListener('popstate', handlePopState.bind(this));
