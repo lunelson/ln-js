@@ -22,61 +22,6 @@ Emitter
     off // what happens if you try to off() soemthing that's not listening
     trigger
 
-//====================================
-
-Prefetch
-    active: Boolean
-    listeners
-    --
-    init
-        - addEventListeners:
-    linkTest(link)
-        - validate link for prefetc
-    setLinkTest(fn)
-        - this.linkTest
-    isValid(link)
-        - return Pjax.linkTest(link) && this.linkTest(link)
-
-Utils
-    getHTML
-    currUrl
-    cleanHref
-    validLink
-    getPort
-
-Transition
-    outroFn
-    outroTl
-    outroRun
-    outroContent
-    outroData
-    ---
-    (constructor)
-    progress
-    runOutro
-    recover
-    makeTL
-
-Dom
-    dataNamespace // rename: namespaceAttr
-    wrapperId
-    spinnerId // add
-    containerClass
-    ---
-    updateTitle(titleEl)
-        - set current title based on input
-    updateWrapper
-        - run queued callbacks for this
-    parseNewContainer(responseText) // rename: processResponse
-        - get response from Ajax.get, put in temp div
-        - parse <title> from temp, pass to this.updateTitle
-        - fire callback to update wrapper
-        - parse <wrapper> from temp, and pass to setContainer
-    currWrapper // rename: parseWrapper(html)
-        - set this.wrapper to #pjax-wrapper or #pjax or body
-    currContainer(wrapper) // rename: parseContainer(wrapper)
-        - set this.currContainer
-
 Pjax // extend Emitter
     <!-- global listeners -->
     click
@@ -127,23 +72,3 @@ Pjax // extend Emitter
         - else
             var outgoingTransition = this.currContainerTrans.recover();
             var transIncoming = this.currContainerTrans.intro
-transOut
-transIn
-recover
-
-
-
-    setCurrTrans // remove
-    loadNewContainer // rename: loadNewDocument
-        - this.getContent -> response
-        - Dom.processResponse -> container
-        -
-
-    handleClick(event)
-    handlePopState(event)
-    --
-    handlePjaxStateChange(clickObj)
-    handlePjaxDomUpdate(title, container)
-    swapAndUpdate // rename: updateDom([newContainer, oldContainer])
-    endTransition
-
