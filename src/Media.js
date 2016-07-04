@@ -5,6 +5,7 @@
 // | |  | |  __/ (_| | | (_| |
 // \_|  |_/\___|\__,_|_|\__,_|
 
+const Emitter = require('./emitter');
 const Media = Object.assign(new Emitter(), {
 
   init() {

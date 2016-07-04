@@ -5,7 +5,7 @@
 //   | |  __/>  <| |_
 //   \_/\___/_/\_\\__|
 
-const Text = {
+var Text = {
 
   cleanLink(url) { return url.replace(/#.*/, ''); }
 

@@ -7,6 +7,13 @@
 //      _/ |
 //     |__/
 
+/* questions
+  - is popstate firing on load?
+    it would cause a transition to the same page, I think
+    if so, how to prevent it?
+  -
+*/
+
 const Emitter = require('./emitter');
 const Stack = require('./navstack');
 const Cache = require('./cache');

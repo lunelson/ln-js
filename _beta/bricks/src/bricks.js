@@ -57,7 +57,7 @@ export default (options = {}) => {
   // general helpers
 
   function runSeries(functions) {
-    functions.forEach(func => func())
+    functions.forEach((func) => func())
   }
 
   // array helpers
@@ -76,7 +76,7 @@ export default (options = {}) => {
     // find index of first (narrowest) matching min-width media query
     // NB should possibly have sorted these first
     return sizes
-      .map(size => size.mq && window.matchMedia(`(min-width: ${ size.mq })`).matches)
+      .map((size) => size.mq && window.matchMedia(`(min-width: ${ size.mq })`).matches)
       .indexOf(true)
   }
 
@@ -109,7 +109,7 @@ export default (options = {}) => {
     }
 
     nodesWidth   = nodes[0].clientWidth //??
-    nodesHeights = nodes.map(element => element.clientHeight)
+    nodesHeights = nodes.map((element) => element.clientHeight)
   }
 
   function mutateNodes() {

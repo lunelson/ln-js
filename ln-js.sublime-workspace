@@ -761,6 +761,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"rootElementId",
+			"contentId",
+			"firstStamp",
 			"newContent",
 			"portNumber",
 			"getContent",
@@ -885,10 +888,7 @@
 			"parseContainer",
 			"wrapper",
 			"getNamespace",
-			"getContainer",
-			"parseResponse",
-			"putContainer",
-			"wrapper"
+			"getContainer"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1232,7 +1232,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 284.0,
+	"side_bar_width": 275.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
