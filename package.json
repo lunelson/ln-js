@@ -28,6 +28,7 @@
   "dependencies": {
     "bluebird": "^3.4.1",
     "gsap": "^1.18.5",
+    "lazysizes": "^2.0.0",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
