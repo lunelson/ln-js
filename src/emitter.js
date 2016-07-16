@@ -7,7 +7,7 @@
 
 class Emitter {
 
-  constructor(){ this.events = {}; }
+  constructor() { this.events = {}; }
 
   on(evt, fn, now = false) {
     this.events[evt] = this.events[evt] || [];

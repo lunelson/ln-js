@@ -15,9 +15,11 @@ const Media = Object.assign(new Emitter(), {
     // init check
     if (this.initialized) throw new Error('Pjax: attempted to initialize twice');
 
+    const mediaKeys = Object.keys(cssMedia);
+
     // build breakPoints object
     const breakPoints = mediaKeys.reduce((obj, key) => {
-      obj[key] = cssMedia[key][breakpoint];
+      obj[key] = cssMedia[key]['breakpoint'];
       return obj;
     },{});
 
@@ -30,13 +32,19 @@ const Media = Object.assign(new Emitter(), {
     // build breakPointHandlers object
     const breakPointHandlers = mediaKeys.reduce((obj, key, i, mediaKeys) => {
       obj[key] = (query) => {
-        this.trigger('change');
-        this.trigger(`enter-${query.matches ? mediaKeys[i + 1] : key}`);
-        this.trigger(`exit-${query.matches ? key : mediaKeys[i + 1]}`);
+        let curr, prev;
+        if (query.matches) { curr = mediaKeys[i+1]; prev = key; }
+        else { prev = mediaKeys[i+1]; curr = key; }
+        this.trigger('change', prev, curr);
       };
       return obj;
     },{});
 
+    mediaKeys.forEach((key)=>{
+      breakPointEvents[key].addListener(breakPointHandlers[key]);
+    })
+
+    this.cssMedia = cssMedia;
     this.initialized = true;
     return this;
   },
