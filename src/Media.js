@@ -23,39 +23,74 @@ const Media = Object.assign(new Emitter(), {
       return obj;
     },{});
 
-    // build breakPointEvents object
-    const breakPointEvents = mediaKeys.reduce((obj, key) => {
+    // build bpMatchers object
+    const bpMatchers = mediaKeys.reduce((obj, key) => {
       obj[key] = global.matchMedia(`(min-width: ${breakPoints[key]})`);
       return obj;
     },{});
 
-    // build breakPointHandlers object
-    const breakPointHandlers = mediaKeys.reduce((obj, key, i, mediaKeys) => {
-      obj[key] = (query) => {
-        let curr, prev;
-        if (query.matches) { curr = mediaKeys[i+1]; prev = key; }
-        else { prev = mediaKeys[i+1]; curr = key; }
-        this.trigger('change', prev, curr);
+    // build bpMatchHandlers object
+    const bpMatchHandlers = mediaKeys.reduce((obj, key, i, mediaKeys) => {
+      obj[key] = (matcher) => {
+        // let prev, curr;
+        // if (matcher.matches) { curr = mediaKeys[i+1]; prev = key; }
+        // else { prev = mediaKeys[i+1]; curr = key; }
+        // this.trigger('change', prev, curr);
+        let dir = matcher.matches ? 'above' : 'below';
+        this.trigger('change', dir, key);
       };
       return obj;
     },{});
 
     mediaKeys.forEach((key)=>{
-      breakPointEvents[key].addListener(breakPointHandlers[key]);
+      bpMatchers[key].addListener(bpMatchHandlers[key]);
     })
 
     this.cssMedia = cssMedia;
+
+    this.on('change', (dir, key) => { this.trigger(`${dir}-${key}`); });
+
+    // this.on('change', (prev, curr) => {
+    //   let prevIndex = mediaKeys.indexOf(prev);
+    //   let currIndex = mediaKeys.indexOf(curr);
+    //   if (prevIndex < currIndex) {
+    //     console.log(obj);
+    //   } else {
+
+    //   }
+    // });
+
     this.initialized = true;
     return this;
   },
 
-  onChange(){},
+  // isAbove(lo) { return  bpMatchers[lo].matches; },
+  // isBelow(hi) { return !bpMatchers[hi].matches; },
+  // isBetween(lo, hi) {
+  //   if (mediaKeys.indexOf(hi) < mediaKeys.indexOf(lo)) [lo, hi] = [hi, lo];
+  //   return bpMatchers[lo].matches && !bpMatchers[hi].matches;
+  // },
 
-  onBelow(){},
+  // onChange(fn) {},
+  // onAbove('c3', fn) {},
+  // onBelow('c3', fn) {},
+  // onBetween('c4', 'c8', fn), {}
 
-  onAbove(){},
 
-  breakPoints(){},
+  onChange(fn){
+    this.on('change', fn);
+  },
+
+  onBelow(bp, fn, now=false){
+    if (now && !bpMatchers[bp].matches) fn();
+  },
+
+  onAbove(bp, fn, now=false){
+    if (now && bpMatchers[bp].matches) fn();
+
+  },
+
+  // breakPoints: breakPoints,
 });
 
 module.exports = Media;
