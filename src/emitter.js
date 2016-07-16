@@ -9,15 +9,16 @@ class Emitter {
 
   constructor(){ this.events = {}; }
 
-  on(evt, fn) {
+  on(evt, fn, now = false) {
     this.events[evt] = this.events[evt] || [];
     this.events[evt].push(fn);
+    if (now) fn();
     return this;
   }
 
-  one(evt, fn) {
+  one(evt, fn, now = false) {
     fn._once = true;
-    this.on(evt, fn);
+    this.on(evt, fn, now);
     return this;
   }
 
