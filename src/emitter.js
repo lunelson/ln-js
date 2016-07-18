@@ -22,6 +22,12 @@ class Emitter {
     return this;
   }
 
+  reqOn(evt, fn, now = false) {
+    fn._reqd = true;
+    this.on(evt, fn, now);
+    return this;
+  }
+
   off(evt, fn = false) {
     fn ?
       this.events[evt].splice(this.events[evt].indexOf(fn), 1):
@@ -29,16 +35,30 @@ class Emitter {
     return this;
   }
 
+  // request(evt, ...args) {
+  //   const fnList = this.events[evt] && this.events[evt].slice();
+  //   fnList && fnList.forEach((fn) => {
+  //     fn._once && this.off(evt, fn);
+  //     fn._reqd && window.requestAnimationFrame(fn.bind(null, ...args));
+  //   });
+  //   return this;
+  // }
+
   trigger(evt, ...args) {
-    // cache the this.events, to avoid consequences of mutation
-    const cache = this.events[evt] && this.events[evt].slice()
-    // only fire fns if they exist
-    cache && cache.forEach((fn) => {
-      // remove fns added with 'once'
-      fn._once && this.off(evt, fn)
-      // set 'this' context, pass args to fns
-      fn.apply(this, args)
-    })
+    const fnList = this.events[evt] && this.events[evt].slice();
+    fnList && fnList.forEach((fn) => {
+      fn._once && this.off(evt, fn);
+      fn.apply(this, args);
+    });
+    // TODO: test if following code is actually faster
+    // let n;
+    // if (this.events[evt] && (n = this.events[evt].length)) {
+    //   while (n--) {
+    //     let fn = this.events[evt][n];
+    //     fn._once && this.off(evt, fn);
+    //     fn.apply(this, args);
+    //   }
+    // }
     return this;
   }
 }
