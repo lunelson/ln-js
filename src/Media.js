@@ -5,92 +5,49 @@
 // | |  | |  __/ (_| | | (_| |
 // \_|  |_/\___|\__,_|_|\__,_|
 
+// NB add polyfill
+require('../lib/match-media');
+
 const Emitter = require('./emitter');
 const cssMedia = require('./css-data').media;
 
-const Media = Object.assign(new Emitter(), {
+const emitter = new Emitter();
+const mediaKeys = Object.keys(cssMedia);
 
-  init() {
+// build breakPoints object
+const breakPoints = mediaKeys.reduce((obj, key) => {
+  obj[key] = cssMedia[key]['breakpoint'];
+  return obj;
+},{});
 
-    // init check
-    if (this.initialized) throw new Error('Pjax: attempted to initialize twice');
+// build bpMatchers object
+const bpMatchers = mediaKeys.reduce((obj, key) => {
+  obj[key] = global.matchMedia(`(min-width: ${breakPoints[key]})`);
+  return obj;
+},{});
 
-    const mediaKeys = Object.keys(cssMedia);
+// build bpMatchHandlers object
+const bpMatchHandlers = mediaKeys.reduce((obj, key, i, mediaKeys) => {
+  obj[key] = (matcher) => {
+    let dir = matcher.matches ? 'above' : 'below';
+    emitter.trigger('change', {key, dir});
+  };
+  return obj;
+},{});
 
-    // build breakPoints object
-    const breakPoints = mediaKeys.reduce((obj, key) => {
-      obj[key] = cssMedia[key]['breakpoint'];
-      return obj;
-    },{});
+mediaKeys.forEach((key) => { bpMatchers[key].addListener(bpMatchHandlers[key]); })
 
-    // build bpMatchers object
-    const bpMatchers = mediaKeys.reduce((obj, key) => {
-      obj[key] = global.matchMedia(`(min-width: ${breakPoints[key]})`);
-      return obj;
-    },{});
+emitter.on('change', ({key, dir}) => { emitter.trigger(`${dir}-${key}`); });
 
-    // build bpMatchHandlers object
-    const bpMatchHandlers = mediaKeys.reduce((obj, key, i, mediaKeys) => {
-      obj[key] = (matcher) => {
-        // let prev, curr;
-        // if (matcher.matches) { curr = mediaKeys[i+1]; prev = key; }
-        // else { prev = mediaKeys[i+1]; curr = key; }
-        // this.trigger('change', prev, curr);
-        let dir = matcher.matches ? 'above' : 'below';
-        this.trigger('change', dir, key);
-      };
-      return obj;
-    },{});
+const Media = {
 
-    mediaKeys.forEach((key)=>{
-      bpMatchers[key].addListener(bpMatchHandlers[key]);
-    })
+  emitter, breakPoints,
 
-    this.cssMedia = cssMedia;
+  onChange(fn){ emitter.on('change', fn); },
 
-    this.on('change', (dir, key) => { this.trigger(`${dir}-${key}`); });
+  onBelow(bp, fn, now=false){ emitter.on(`below-${bp}`, fn, now && !bpMatchers[bp].matches); },
 
-    // this.on('change', (prev, curr) => {
-    //   let prevIndex = mediaKeys.indexOf(prev);
-    //   let currIndex = mediaKeys.indexOf(curr);
-    //   if (prevIndex < currIndex) {
-    //     console.log(obj);
-    //   } else {
-
-    //   }
-    // });
-
-    this.initialized = true;
-    return this;
-  },
-
-  // isAbove(lo) { return  bpMatchers[lo].matches; },
-  // isBelow(hi) { return !bpMatchers[hi].matches; },
-  // isBetween(lo, hi) {
-  //   if (mediaKeys.indexOf(hi) < mediaKeys.indexOf(lo)) [lo, hi] = [hi, lo];
-  //   return bpMatchers[lo].matches && !bpMatchers[hi].matches;
-  // },
-
-  // onChange(fn) {},
-  // onAbove('c3', fn) {},
-  // onBelow('c3', fn) {},
-  // onBetween('c4', 'c8', fn), {}
-
-
-  onChange(fn){
-    this.on('change', fn);
-  },
-
-  onBelow(bp, fn, now=false){
-    if (now && !bpMatchers[bp].matches) fn();
-  },
-
-  onAbove(bp, fn, now=false){
-    if (now && bpMatchers[bp].matches) fn();
-
-  },
-
-  // breakPoints: breakPoints,
-});
+  onAbove(bp, fn, now=false){ emitter.on(`above-${bp}`, fn, now && bpMatchers[bp].matches); }
+};
 
 module.exports = Media;
