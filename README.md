@@ -1,5 +1,44 @@
 # ln-js
 
+## RAF
+
+make a class which can accept any element
+
+cache:
+    scrollTop
+    width, height
+    clientX
+    clientY
+
+emit:
+    scroll
+    resize
+    pointer (mouse, touch)
+        mouseenter
+        mousemove
+        mouseleave
+
+Win = new Tracker(window);
+    .scrollTop
+    .dimensions
+    .width
+    .height
+    .clientX
+    .clientY
+
+- debounce activation of a fast-as-possible function
+    on event, start tracking fast as possible
+        emit events
+    after minTime of no events, stop
+
+- allow both 'emit' and 'trigger'
+- allow both 'one' and 'once'
+- create 'request' method
+
+request
+trigger
+
+
 ## TODO
 
 PJAX STUFF

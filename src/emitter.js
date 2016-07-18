@@ -22,11 +22,11 @@ class Emitter {
     return this;
   }
 
-  reqOn(evt, fn, now = false) {
-    fn._reqd = true;
-    this.on(evt, fn, now);
-    return this;
-  }
+  // reqOn(evt, fn, now = false) {
+  //   fn._reqd = true;
+  //   this.on(evt, fn, now);
+  //   return this;
+  // }
 
   off(evt, fn = false) {
     fn ?
