@@ -7,11 +7,9 @@
 
 // NB add polyfill
 require('../lib/match-media');
-
 const Emitter = require('./emitter');
-const cssMedia = require('./css-data').media;
-
 const emitter = new Emitter();
+const cssMedia = require('./css-data').media;
 const mediaKeys = Object.keys(cssMedia);
 
 // build breakPoints object
@@ -43,11 +41,17 @@ const Media = {
 
   emitter, breakPoints,
 
-  onChange(fn){ emitter.on('change', fn); },
+  keys: mediaKeys,
 
-  onBelow(bp, fn, now=false){ emitter.on(`below-${bp}`, fn, now && !bpMatchers[bp].matches); },
+  currKey() { return mediaKeys.filter((key) => { return bpMatchers[key].matches; }).reverse()[0]; },
 
-  onAbove(bp, fn, now=false){ emitter.on(`above-${bp}`, fn, now && bpMatchers[bp].matches); }
+  currIndex() { return mediaKeys.indexOf(this.current()); },
+
+  onChange(fn) { emitter.on('change', fn); },
+
+  onBelow(bp, fn, now=false) { emitter.on(`below-${bp}`, fn, now && !bpMatchers[bp].matches); },
+
+  onAbove(bp, fn, now=false) { emitter.on(`above-${bp}`, fn, now && bpMatchers[bp].matches); }
 };
 
 module.exports = Media;
