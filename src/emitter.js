@@ -5,6 +5,7 @@
 // | |__| | | | | | | |_| ||  __/ |
 // \____/_| |_| |_|_|\__|\__\___|_|
 
+// TODO make a fallback, if window.setImmediate does not exist ?
 require('setimmediate');
 
 class Emitter {

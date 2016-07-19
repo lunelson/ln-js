@@ -44,8 +44,13 @@ const Media = {
   keys: mediaKeys,
 
   currKey() { return mediaKeys.filter((key) => { return bpMatchers[key].matches; }).reverse()[0]; },
-
   currIndex() { return mediaKeys.indexOf(this.current()); },
+
+  // TODO: add some medium-value functions
+  marginY(mult, key) {},
+  marginX(mult, key) {},
+  remPx(key) {},
+
 
   onChange(fn) { emitter.on('change', fn); },
 
