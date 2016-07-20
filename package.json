@@ -11,6 +11,9 @@
     "dev": "npm run js & npm run serve",
     "lint": "./node_modules/.bin/eslint ./"
   },
+  "browserify": {
+    "transform": [["babelify", { "presets": ["es2015"] }]]
+  },
   "private": true,
   "repository": {
     "type": "git",
