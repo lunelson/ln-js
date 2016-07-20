@@ -6,7 +6,7 @@
 // \____/_| |_| |_|_|\__|\__\___|_|
 
 // TODO make a fallback, if window.setImmediate does not exist ?
-require('setimmediate');
+// require('setimmediate');
 
 class Emitter {
 
@@ -51,8 +51,8 @@ class Emitter {
     const fnList = this.events[evt] && this.events[evt].slice();
     fnList && fnList.forEach((fn) => {
       fn._once && this.off(evt, fn);
-      setImmediate(fn.bind(this, ...args));
-      // fn.apply(this, args);
+      // setImmediate(fn.bind(this, ...args));
+      fn.apply(this, args);
     });
     // TODO: test if following code is actually faster
     // let n;

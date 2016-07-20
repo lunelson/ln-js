@@ -5,67 +5,71 @@
 // | |  | |  __/ (_| | | (_| |
 // \_|  |_/\___|\__,_|_|\__,_|
 
-// NB add polyfill
-require('../lib/match-media');
+
+require('../lib/match-media'); // matchMedia polyfill
 const Emitter = require('./emitter');
-const emitter = new Emitter();
 const cssMedia = require('./css-data').media;
+const mediaEmitter = new Emitter();
 const mediaKeys = Object.keys(cssMedia);
-
-// build breakPoints object
-const breakPoints = mediaKeys.reduce((obj, key) => {
-  obj[key] = cssMedia[key]['breakpoint'];
-  return obj;
+const breakPoints = mediaKeys.reduce((dest, key) => {
+  dest[key] = cssMedia[key]['breakpoint'];
+  return dest;
 },{});
 
-// build bpMatchers object
-const bpMatchers = mediaKeys.reduce((obj, key) => {
-  obj[key] = global.matchMedia(`(min-width: ${breakPoints[key]})`);
-  return obj;
-},{});
+window.Media = module.exports = {
 
-// build bpMatchHandlers object
-const bpMatchHandlers = mediaKeys.reduce((obj, key, i, mediaKeys) => {
-  obj[key] = (matcher) => {
-    let dir = matcher.matches ? 'above' : 'below';
-    emitter.trigger('change', {key, dir});
-  };
-  return obj;
-},{});
-
-mediaKeys.forEach((key) => { bpMatchers[key].addListener(bpMatchHandlers[key]); })
-
-emitter.on('change', ({key, dir}) => { emitter.trigger(`${dir}-${key}`); });
-
-const Media = {
-
-  emitter, breakPoints,
+  mediaEmitter, breakPoints,
 
   keys: mediaKeys,
-
-  currKey() { return mediaKeys.filter((key) => { return bpMatchers[key].matches; }).reverse()[0]; },
-  // currIndex() { return mediaKeys.indexOf(this.current()); },
+  currKey: null,
+  // currKeyIndex: null,
 
   marginY(mult, key) {
-    key = key || this.currKey();
+    key = key || this.currKey;
     return parseInt(cssMedia[key]['margin-y']) * this.remPx(key);
   },
 
   marginX(mult, key) {
-    key = key || this.currKey();
+    key = key || this.currKey;
     return parseInt(cssMedia[key]['margin-x']) * this.remPx(key);
   },
 
   remPx(key) {
-    key = key || this.currKey();
+    key = key || this.currKey;
     return cssMedia[key]['html-scale'] * 16;
   },
 
-  onChange(fn) { emitter.on('change', fn); },
+  onChange(fn) { mediaEmitter.on('change', fn); },
 
-  onBelow(bp, fn, now=false) { emitter.on(`below-${bp}`, fn, now && !bpMatchers[bp].matches); },
+  onEnter([lo, hi], fn, now=false) {},
 
-  onAbove(bp, fn, now=false) { emitter.on(`above-${bp}`, fn, now && bpMatchers[bp].matches); }
+  onExit([lo, hi], fn, now=false) {},
+
+  onBelow(bp, fn, now=false) { mediaEmitter.on(`below-${bp}`, fn, now && !bpMatchers[bp].matches); },
+
+  onAbove(bp, fn, now=false) { mediaEmitter.on(`above-${bp}`, fn, now && bpMatchers[bp].matches); }
 };
 
-module.exports = Media;
+// build up matchers
+const bpMatchers = mediaKeys.reduce((dest, key) => {
+  dest[key] = global.matchMedia(`(min-width: ${breakPoints[key]})`);
+  return dest;
+},{});
+
+// build up handlers
+const bpMatchHandlers = mediaKeys.reduce((dest, key, i, mediaKeys) => {
+  dest[key] = (matcher) => {
+    let dir = matcher.matches ? 'above' : 'below';
+    mediaEmitter.trigger('change', {key, dir});
+    mediaEmitter.trigger(`${dir}-${key}`);
+    Media.currKey = matcher.matches ? key : mediaKeys[i +1];
+    // Media.currKeyIndex = matcher.matches ? i : i + 1;
+  };
+  return dest;
+},{});
+
+// set current key
+Media.currKey = mediaKeys.filter((key) => { return bpMatchers[key].matches; }).reverse()[0];
+
+// hook up the handlers to the matchers
+mediaKeys.forEach((key) => { bpMatchers[key].addListener(bpMatchHandlers[key]); })
