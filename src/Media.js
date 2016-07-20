@@ -8,7 +8,9 @@
 
 require('../lib/match-media'); // matchMedia polyfill
 const Emitter = require('./emitter');
-const cssMedia = require('./css-data').media; // need a way to check if CSS is actually loaded already
+// TODO: find a way to check if CSS is actually loaded already
+// TODO: use cssData here; make a function that returns cssMedium(key), which looks up cssData.media but falls back to cssData.base
+const cssMedia = require('./css-data').media;
 const mediaEmitter = new Emitter();
 const mediaKeys = Object.keys(cssMedia);
 const breakPoints = mediaKeys.reduce((dest, key) => {
@@ -21,7 +23,7 @@ window.Media = module.exports = {
   mediaEmitter, breakPoints,
 
   keys: mediaKeys,
-  currKey: null,
+  currKey: undefined,
   // currKeyIndex: null,
 
   marginY(mult, key) {
@@ -62,7 +64,7 @@ const bpMatchHandlers = mediaKeys.reduce((dest, key, i, mediaKeys) => {
     let dir = matcher.matches ? 'above' : 'below';
     mediaEmitter.trigger('change', {key, dir});
     mediaEmitter.trigger(`${dir}-${key}`);
-    Media.currKey = matcher.matches ? key : mediaKeys[i +1];
+    Media.currKey = matcher.matches ? key : mediaKeys[i - 1]; // should be undefined if below the smallest query
     // Media.currKeyIndex = matcher.matches ? i : i + 1;
   };
   return dest;
