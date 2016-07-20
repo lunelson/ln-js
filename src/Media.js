@@ -44,13 +44,22 @@ const Media = {
   keys: mediaKeys,
 
   currKey() { return mediaKeys.filter((key) => { return bpMatchers[key].matches; }).reverse()[0]; },
-  currIndex() { return mediaKeys.indexOf(this.current()); },
+  // currIndex() { return mediaKeys.indexOf(this.current()); },
 
-  // TODO: add some medium-value functions
-  marginY(mult, key) {},
-  marginX(mult, key) {},
-  remPx(key) {},
+  marginY(mult, key) {
+    key = key || this.currKey();
+    return parseInt(cssMedia[key]['margin-y']) * this.remPx(key);
+  },
 
+  marginX(mult, key) {
+    key = key || this.currKey();
+    return parseInt(cssMedia[key]['margin-x']) * this.remPx(key);
+  },
+
+  remPx(key) {
+    key = key || this.currKey();
+    return cssMedia[key]['html-scale'] * 16;
+  },
 
   onChange(fn) { emitter.on('change', fn); },
 
