@@ -8,7 +8,7 @@
 
 require('../lib/match-media'); // matchMedia polyfill
 const Emitter = require('./emitter');
-const cssMedia = require('./css-data').media;
+const cssMedia = require('./css-data').media; // need a way to check if CSS is actually loaded already
 const mediaEmitter = new Emitter();
 const mediaKeys = Object.keys(cssMedia);
 const breakPoints = mediaKeys.reduce((dest, key) => {
