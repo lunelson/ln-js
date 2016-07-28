@@ -21,16 +21,18 @@ class AsyncEmitter {
     let mutateFns = fnSet.mutate = fnSet.mutate || [];
 
     if (measure) {
+      measure = applyAndReset.bind(null, measure)
       measure._pending = false;
       measure._cancellable = cancellable[0];
     }
     if (mutate) {
+      mutate = applyAndReset.bind(null, mutate)
       mutate._pending = false;
       mutate._cancellable = cancellable[1];
     }
 
-    measureFns.push(measure);
-    mutateFns.push(mutate);
+    measureFns.push();
+    mutateFns.push();
 
     return measureFns.length - 1;
   }
