@@ -15,7 +15,7 @@ var breakPoints = Media.breakPoints;
 // function runFnSeries(series) { series.forEach((fn) => fn()) }
 function nodeArray(selector) { return Array.prototype.slice.call(document.querySelectorAll(selector)); }
 // function zeroArray(length) { return Array.apply(null, Array(length)).map(() => 0); }
-function getColumnCount() { return this.columnCounts[Media.currKey()]; }
+function getColumnCount() { return this.columnCounts[Media.currKey]; }
 function setColumnCounts(minCellWidth) {
   var counts = Object.keys(cssMedia).reduce((obj, key) => {
     obj[key] = Math.floor(parseInt(breakPoints[key])/(minCellWidth*cssMedia[key]['html-scale']));

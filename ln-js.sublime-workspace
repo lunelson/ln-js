@@ -177,6 +177,9 @@
 			]
 		]
 	},
+	"buffers":
+	[
+	],
 	"build_system": "",
 	"build_system_choices":
 	[
@@ -575,6 +578,10 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/lunelson/Git/packages/ln-js"
+	],
 	"file_history":
 	[
 		"/Users/lunelson/Git/packages/ln-js/src/cache.js",
@@ -937,6 +944,14 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
 	"incremental_find":
 	{
 		"height": 27.0
@@ -977,6 +992,7 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "Packages/User/SassQuatch.sublime-build",
+	"project": "ln-js.sublime-project",
 	"replace":
 	{
 		"height": 50.0
@@ -1225,6 +1241,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
