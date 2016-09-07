@@ -1,5 +1,31 @@
 # ln-js
 
+## re-organization !!!!
+
+ajax/
+    fetch
+    pjax/
+events/
+    emitter
+    emitter-duo
+    tracker
+media.js
+math.js
+layout/
+    mason.js
+graphics/
+    context-plus.js
+    particle.js
+    point.js
+    shape.js
+    vector.js
+    utilities.js
+vendor/
+    gsap/
+    lazy/
+    bliss
+    jquery
+
 ## collision detection, Shape class
 
 .isOutTop,-Right,-Bottom,-Left
