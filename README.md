@@ -1,6 +1,11 @@
 # ln-js
 
-## RAF
+## collision detection, Shape class
+
+.isOutTop,-Right,-Bottom,-Left
+.isTouching(shape)
+
+## RAFwindow
 
 make a class which can accept any element
 
