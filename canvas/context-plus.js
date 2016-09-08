@@ -11,6 +11,7 @@ module.exports = function(ctx) {
   ctx.pointerY = 0;
 
   // listeners
+  // TODO: can this be restricted to just the canvas?
   document.addEventListener('mousemove', (event) => {
     var clientRect = ctx.canvas.getBoundingClientRect();
     ctx.pointerX = event.clientX - clientRect.left;
