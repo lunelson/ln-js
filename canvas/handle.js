@@ -1,8 +1,9 @@
 /**
  * Handle
  * extension of Particle, Shape
- * NEXT:
-   * declare movement dimensions (x and y, x only, y only)
+ * NEXT
+ * check for presence of contextPlus, add if not present
+ * figure out how to save/restore styles, also provide a 'selected' style, in options
  */
 
 var hitTests = {
@@ -36,9 +37,11 @@ module.exports = class Handle {
       radius: 10,
       shape: null,
       rect: null,
-      fillStyle: `rgb(200,100,100)`,
+      fillStyle: 'rgb(200,100,100)',
       strokeStyle: null,
       lineWidth: null,
+      movableX: true,
+      movableY: true
     }, options);
     this.pointerTest = (this.rect || this.shape) ? hitTests.rectPoint : hitTests.circlePoint;
     Handle.register(this);
@@ -74,7 +77,7 @@ module.exports = class Handle {
       var clicked = null;
       for (var n = 0; n < this.instances.length; n++) {
         var current = this.instances[n];
-        if (Math.hypot(current.x - current.ctx.pointerX, current.y - current.ctx.pointerY) < current.radius) {
+        if (current.pointerTest(current.ctx.pointerX, current.ctx.pointerY)) {
           clicked = current;
           break;
         }
@@ -88,8 +91,8 @@ module.exports = class Handle {
         document.addEventListener('mousemove', mouseMove);
         document.addEventListener('mouseup', mouseUp);
         function mouseMove(){
-          clicked.x = clicked.ctx.pointerX + clicked.offsetX;
-          clicked.y = clicked.ctx.pointerY + clicked.offsetY;
+          if (clicked.movableX) { clicked.x = clicked.ctx.pointerX + clicked.offsetX; }
+          if (clicked.movableY) { clicked.y = clicked.ctx.pointerY + clicked.offsetY; }
         }
         function mouseUp(){
           clicked.fillStyle = prevFillStyle;
