@@ -24,7 +24,7 @@ module.exports = function(ctx) {
      * SHAPE
      */
 
-    drawShape(x, y, points, rotation) {
+    shape(x, y, points, rotation) {
       this.save();
       this.translate(x, y);
       this.rotate(rotation || 0);
@@ -35,7 +35,7 @@ module.exports = function(ctx) {
 
     fillShape(x, y, points, rotation, fillStyle/*, closed*/) {
       this.beginPath();
-      this.drawShape(x, y, points, rotation);
+      this.shape(x, y, points, rotation);
       // if (closed) { this.closePath(); }
       this.fillStyle = fillStyle || this.fillStyle;
       this.fill();
@@ -43,7 +43,7 @@ module.exports = function(ctx) {
 
     strokeShape(x, y, points, rotation, strokeStyle, lineWidth, closed) {
       this.beginPath();
-      this.drawShape(x, y, points, rotation);
+      this.shape(x, y, points, rotation);
       if (closed) { this.closePath(); }
       this.strokeStyle = strokeStyle || this.strokeStyle;
       this.lineWidth = lineWidth || this.lineWidth;
@@ -54,19 +54,19 @@ module.exports = function(ctx) {
      * CIRCLE
      */
 
-    drawCircle(x, y, r, ccw) {
+    circle(x, y, r, ccw) {
       this.arc(x, y, r, 0, Math.PI * 2, ccw);
     },
 
     fillCircle(x, y, r) {
       this.beginPath();
-      this.drawCircle(x, y, r);
+      this.circle(x, y, r);
       this.fill();
     },
 
     strokeCircle(x, y, r) {
       this.beginPath();
-      this.drawCircle(x, y, r);
+      this.circle(x, y, r);
       this.stroke();
     },
 
@@ -74,7 +74,7 @@ module.exports = function(ctx) {
      * ELLIPSE
      */
 
-    drawEllipse(x, y, xr, yr, rotation) {
+    ellipse(x, y, xr, yr, rotation) {
       this.save();
       this.translate(x, y);
       this.rotate(rotation || 0);
@@ -85,13 +85,13 @@ module.exports = function(ctx) {
 
     fillEllipse(x, y, xr, yr, rotation) {
       this.beginPath();
-      this.drawEllipse(x, y, xr, yr, rotation);
+      this.ellipse(x, y, xr, yr, rotation);
       this.fill();
     },
 
     strokeEllipse(x, y, xr, yr, rotation) {
       this.beginPath();
-      this.drawEllipse(x, y, xr, yr, rotation);
+      this.ellipse(x, y, xr, yr, rotation);
       this.stroke();
     },
 
@@ -99,7 +99,7 @@ module.exports = function(ctx) {
      * POLYGON
      */
 
-     drawPolygon(x, y, r, sides, rotation) {
+     polygon(x, y, r, sides, rotation) {
        this.save();
        this.translate(x, y);
        this.rotate(rotation || 0);
@@ -114,13 +114,13 @@ module.exports = function(ctx) {
 
      fillPolygon(x, y, r, sides, rotation, fillStyle) {
        this.beginPath();
-       this.drawPolygon(x, y, r, sides, rotation);
+       this.polygon(x, y, r, sides, rotation);
        this.fill();
      },
 
      strokePolygon(x, y, r, sides, rotation, strokeWidth) {
        this.beginPath();
-       this.drawPolygon(x, y, r, sides, rotation);
+       this.polygon(x, y, r, sides, rotation);
        this.stroke();
      },
 
