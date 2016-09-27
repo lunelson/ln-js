@@ -6,8 +6,8 @@
 // |_.__/|_|  |_|\___|_|\_\___/
 
 // dependencies
-var Media = require('./media');
-var cssMedia = require('./css-data').media;
+var Media = require('../media/media');
+var cssMedia = require('../utility/css-data').media;
 var breakPoints = Media.breakPoints;
 
 

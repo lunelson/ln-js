@@ -6,12 +6,12 @@
 // \_|  |_/\___|\__,_|_|\__,_|
 
 
-require('../lib/match-media'); // matchMedia polyfill
-const Emitter = require('./emitter');
+require('../vendor/match-media'); // matchMedia polyfill
+const Emitter = require('../event/emitter');
 // TODO: find a way to check if CSS is actually loaded already
 // TODO: use cssData here; make a function that returns cssMedium(key), which looks up cssData.media but falls back to cssData.base
-const cssMedia = require('./css-data').media;
 const mediaEmitter = new Emitter();
+const cssMedia = require('../utility/css-data').media;
 const mediaKeys = Object.keys(cssMedia);
 const breakPoints = mediaKeys.reduce((dest, key) => {
   dest[key] = cssMedia[key]['breakpoint'];
