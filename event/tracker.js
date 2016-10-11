@@ -1,4 +1,7 @@
-
+/*
+- add this as reference for track-window
+    https://github.com/christinecha/choreographer-js/blob/master/src/Animation.js
+ */
 const Emitter = require('./emitter');
 const throttle = require('../lib/throttle');
 
